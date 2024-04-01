@@ -17,10 +17,10 @@ CREATE TABLE Product (
 
 CREATE TABLE CreditCards (
     cardID numeric PRIMARY KEY,
-    customer_ID NUMERIC NOT NULL,
+    user_ID NUMERIC NOT NULL,
     cardNumber VARCHAR(20) NOT NULL,
     expiryDate DATE NOT NULL,
-    FOREIGN KEY (customer_ID) REFERENCES Users(userID)
+    FOREIGN KEY (user_ID) REFERENCES Users(userID)
 );
 
 CREATE TABLE Warehouse (
@@ -31,20 +31,18 @@ CREATE TABLE Warehouse (
 
 CREATE TABLE Orders (
     order_id SERIAL PRIMARY KEY,
-    customer_ID NUMERIC NOT NULL,
+    user_ID NUMERIC NOT NULL,
     prod_id NUMERIC NOT NULL,
     quantity NUMERIC NOT NULL,
-    credit_card NUMERIC,
+    credit_card NUMERIC NOT NULL,
     status VARCHAR(50),
     delivery_type VARCHAR(50),
     delivery_price NUMERIC,
-    userID NUMERIC,
     ship_date DATE NOT NULL,
     delivery_date DATE NOT NULL,
-    FOREIGN KEY (customer_ID) REFERENCES Users(userID),
+    FOREIGN KEY (user_ID) REFERENCES Users(userID),
     FOREIGN KEY (prod_id) REFERENCES Product(prod_id),
-    FOREIGN KEY (credit_card) REFERENCES CreditCards(cardID),
-    FOREIGN KEY (userID) REFERENCES Users(userID)
+    FOREIGN KEY (credit_card) REFERENCES CreditCards(cardID)
 );
 
 CREATE TABLE Stock (
