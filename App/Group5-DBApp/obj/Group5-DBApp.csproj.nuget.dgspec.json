@@ -1,31 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\apmar\\OneDrive\\Desktop\\CS4092\\DDD-Project\\app\\Group5-DBApp\\Group5-DBApp.csproj": {}
+    "C:\\Users\\Huy\\group5\\App\\Group5-DBApp\\Group5-DBApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\apmar\\OneDrive\\Desktop\\CS4092\\DDD-Project\\app\\Group5-DBApp\\Group5-DBApp.csproj": {
+    "C:\\Users\\Huy\\group5\\App\\Group5-DBApp\\Group5-DBApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\apmar\\OneDrive\\Desktop\\CS4092\\DDD-Project\\app\\Group5-DBApp\\Group5-DBApp.csproj",
+        "projectUniqueName": "C:\\Users\\Huy\\group5\\App\\Group5-DBApp\\Group5-DBApp.csproj",
         "projectName": "Group5-DBApp",
-        "projectPath": "C:\\Users\\apmar\\OneDrive\\Desktop\\CS4092\\DDD-Project\\app\\Group5-DBApp\\Group5-DBApp.csproj",
-        "packagesPath": "C:\\Users\\apmar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\apmar\\OneDrive\\Desktop\\CS4092\\DDD-Project\\app\\Group5-DBApp\\obj\\",
+        "projectPath": "C:\\Users\\Huy\\group5\\App\\Group5-DBApp\\Group5-DBApp.csproj",
+        "packagesPath": "C:\\Users\\Huy\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Huy\\group5\\App\\Group5-DBApp\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\apmar\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Huy\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -48,6 +42,12 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -67,7 +67,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,5 +1,6 @@
 @page
-@model IndexModel
+@using Group5_DBApp.Models
+@model Group5_DBApp.Pages.ProductsModel
 @{
     ViewData["Title"] = "Products";
 }
@@ -22,13 +23,17 @@
             <h2>Featured Products</h2>
             <!-- Display featured products here -->
             <!-- Example: -->
-            <div class="product-card">
-                <img src="product1.jpg" alt="Product 1">
-                <h3>Product 1</h3>
-                <p>Description of Product 1</p>
+            @foreach (var product in Model.Products)
+            {
+                <div class="product-card">
+                @* <img src="product1.jpg" alt="@product.ProdName"> *@
+                <h3>@product.ProdName</h3>
+                <p>@product.Price</p>
                 <button>Add to Cart</button>
-            </div>
+                </div>
             <!-- Repeat for other featured products -->
+            }
+            
         </section>
 
         <section class="search-products">
