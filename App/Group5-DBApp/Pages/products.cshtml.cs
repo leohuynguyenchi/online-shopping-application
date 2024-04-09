@@ -11,11 +11,11 @@ public class ProductsModel(ILogger<PrivacyModel> logger, DataContext context) : 
     private readonly ILogger<PrivacyModel> _logger = logger;
     private readonly DataContext _context = context;
 
-    public IList<Product> Products { get; set; }
+    public IList<Product> Product { get; set; }
 
     public async Task OnGetAsync()
     {
-        Products = await _context.Products.ToListAsync();
+        Product = await _context.Products.ToListAsync();
     }
 }
 
