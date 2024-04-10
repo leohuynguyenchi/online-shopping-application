@@ -62,31 +62,3 @@ CREATE TABLE Suppliers (
     address VARCHAR(255) NOT NULL,
     FOREIGN KEY (prod_id) REFERENCES Product(prod_id)
 );
-
-INSERT INTO Users (userID, userType, user_name) VALUES
-(1, 'Customer', 'John Doe'),
-(2, 'Customer', 'Jane Smith'),
-(3, 'Staff', 'Dan Johnson');
-
-INSERT INTO CreditCards (cardID, user_ID, cardNumber, expiryDate) VALUES
-(1, 1, '1234567890123456', '2025-12-31'),
-(2, 2, '9876543210987654', '2024-09-30');
-
-INSERT INTO Warehouse (warehouse_id, capacity, address) VALUES
-(1, 1000, '123 Main Street'),
-(2, 1500, '456 Elm Street');
-
-INSERT INTO Product (prod_id, prod_name, price) VALUES
-(1, 'Wilson Evolution Indoor Basketball', 59.99),
-(2, 'Spalding NBA Street Outdoor Basketball', 29.99),
-(3, 'Nike Elite Championship Basketball', 89.99),
-(4, 'Under Armour 495 Indoor/Outdoor Basketball', 39.99),
-(5, 'Molten BGG Composite Basketball', 44.99);
-
-INSERT INTO Suppliers (name, prod_id, price, address) VALUES
-('Supplier A', 1, 25.99, '789 Oak Street'),
-('Supplier B', 2, 89.99, '101 Maple Avenue');
-
-INSERT INTO Stock (prod_id, warehouse_id, quantity) VALUES
-(1, 1, 50),
-(2, 2, 30);
