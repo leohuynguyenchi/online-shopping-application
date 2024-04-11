@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "C:\\Users\\samw1\\DatabaseProject\\group5\\App\\Group5-DBApp\\Group5-DBApp.csproj": {}
   },
   "projects": {
@@ -15,6 +16,22 @@
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\samw1\\AppData\\Roaming\\NuGet\\NuGet.Config"
+=======
+    "C:\\Users\\Huy\\group5\\App\\Group5-DBApp\\Group5-DBApp.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Huy\\group5\\App\\Group5-DBApp\\Group5-DBApp.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Huy\\group5\\App\\Group5-DBApp\\Group5-DBApp.csproj",
+        "projectName": "Group5-DBApp",
+        "projectPath": "C:\\Users\\Huy\\group5\\App\\Group5-DBApp\\Group5-DBApp.csproj",
+        "packagesPath": "C:\\Users\\Huy\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Huy\\group5\\App\\Group5-DBApp\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Huy\\AppData\\Roaming\\NuGet\\NuGet.Config"
+>>>>>>> a5cdf50f3837c9ca9e574f80043bbb7974366c9c
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -42,6 +59,22 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[8.0.4, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -61,7 +94,11 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.203/PortableRuntimeIdentifierGraph.json"
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+>>>>>>> a5cdf50f3837c9ca9e574f80043bbb7974366c9c
         }
       }
     }

@@ -9,12 +9,17 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Group5_DBApp
 build_property.RootNamespace = Group5_DBApp
+<<<<<<< HEAD
 build_property.ProjectDir = C:\Users\samw1\DatabaseProject\group5\App\Group5-DBApp\
+=======
+build_property.ProjectDir = C:\Users\Huy\group5\App\Group5-DBApp\
+>>>>>>> a5cdf50f3837c9ca9e574f80043bbb7974366c9c
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+<<<<<<< HEAD
 build_property.MSBuildProjectDirectory = C:\Users\samw1\DatabaseProject\group5\App\Group5-DBApp
 build_property._RazorSourceGeneratorDebug = 
 
@@ -59,5 +64,43 @@ build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/samw1/DatabaseProject/group5/App/Group5-DBApp/Pages/Shared/_Layout.cshtml]
+=======
+build_property.MSBuildProjectDirectory = C:\Users\Huy\group5\App\Group5-DBApp
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/Huy/group5/App/Group5-DBApp/Pages/account.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWNjb3VudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Huy/group5/App/Group5-DBApp/Pages/cart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcY2FydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Huy/group5/App/Group5-DBApp/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Huy/group5/App/Group5-DBApp/Pages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Huy/group5/App/Group5-DBApp/Pages/products.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNccHJvZHVjdHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Huy/group5/App/Group5-DBApp/Pages/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Huy/group5/App/Group5-DBApp/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Huy/group5/App/Group5-DBApp/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Huy/group5/App/Group5-DBApp/Pages/Shared/_Layout.cshtml]
+>>>>>>> a5cdf50f3837c9ca9e574f80043bbb7974366c9c
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-1qmecjdfxi

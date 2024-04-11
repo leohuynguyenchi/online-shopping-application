@@ -1,5 +1,6 @@
 @page
-@model IndexModel
+@using Group5_DBApp.Models
+@model Group5_DBApp.Pages.ProductsModel
 @{
     ViewData["Title"] = "Products";
 }
@@ -13,37 +14,30 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Welcome to Our Online Store</h1>
-    </header>
-
     <main>
-        <section class="featured-products">
-            <h2>Featured Products</h2>
-            <!-- Display featured products here -->
-            <!-- Example: -->
-            <div class="product-card">
-                <img src="product1.jpg" alt="Product 1">
-                <h3>Product 1</h3>
-                <p>Description of Product 1</p>
-                <button>Add to Cart</button>
-            </div>
-            <!-- Repeat for other featured products -->
-        </section>
-
         <section class="search-products">
-            <h2>Search Products</h2>
             <!-- Search form to search for products -->
             <form action="#" method="GET">
                 <input type="text" name="search" placeholder="Search products...">
                 <button type="submit">Search</button>
             </form>
         </section>
+        <section class="featured-products">
+            <!-- Display featured products here -->
+            <!-- Example: -->
+            @foreach (var product in Model.Products)
+            {
+                <div class="product-card">
+                @* <img src="product1.jpg" alt="@product.ProdName"> *@
+                <h3>@product.prod_name</h3>
+                <p>@product.price</p>
+                <button>Add to Cart</button>
+                </div>
+            <!-- Repeat for other featured products -->
+            }
+            
+        </section>
     </main>
-
-    <footer>
-        <p>&copy; 2024 Online Shopping Application. All Rights Reserved.</p>
-    </footer>
 </body>
 </html>
 
