@@ -1,14 +1,13 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Group5_DBApp.Models;
 namespace Group5_DBApp.Pages;
 
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-public class ProductsModel(ILogger<PrivacyModel> logger, DataContext context) : PageModel
+public class ProductsModel(ILogger<ProductsModel> logger, DataContext context) : PageModel
 #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 {
-    private readonly ILogger<PrivacyModel> _logger = logger;
+    private readonly ILogger<ProductsModel> _logger = logger;
     private readonly DataContext _context = context;
 
     public IList<Product> Products { get; set; }
