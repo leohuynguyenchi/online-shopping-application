@@ -16,6 +16,12 @@ namespace Group5_DBApp.Models
 
         public DbSet<Warehouse> Warehouse  {get; set;} // Dbset for the warehouse entity
 
+        public DbSet<Orders> Orders { get; set; } // Dbset for the orders utility
+
+        public DbSet<Suppliers> Suppliers { get; set; } // Dbset for the suppliers utility
+
+        public DbSet<Stock> Stock { get; set; } // Dbset for the stock utility
+
         public string? DbPath {get;}
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -48,6 +54,8 @@ namespace Group5_DBApp.Models
                 new Warehouse { warehouse_id = 1, address = "123 Main Street", capacity = 100},
                 new Warehouse { warehouse_id = 2, address = "456 Elm Avenue", capacity = 75}
             );
+
+            // need to add data for the orders, stock, and suppliers - Pipo
         }
     }
 }

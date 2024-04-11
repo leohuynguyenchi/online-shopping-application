@@ -1,5 +1,6 @@
 @page
-@model AccountModel
+@using Group5_DBApp.Models
+@model Group5_DBApp.Pages.AccountModel
 @{
     ViewData["Title"] = "Account Info";
 }
@@ -22,11 +23,16 @@
         <br>
         <h3>Credit Card Information:</h3>
         <p>[Credit Card Owner]</p>
-        <p>[Credit Card Number]</p>
-        <p>[Expiration Date]</p>
-        <p>[Security Code]</p>
-        <br>
-        <button>Update Credit Card Info</button>
+        @* <p>@foreach (var creditCards in Model.CreditCards)
+            {
+                <div class="credit-card">
+                <h3>@creditCards.user_id</h3>
+                <p>@creditCards.card_number</p>
+                <p>@creditCards.expire_date</p>
+                <button>Update Credit Card</button>
+                </div>
+            }
+        </p> *@
         <br>
         <br>
         <h3>Address Information:</h3>
