@@ -14,13 +14,15 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Welcome to Our Online Store</h1>
-    </header>
-
     <main>
+        <section class="search-products">
+            <!-- Search form to search for products -->
+            <form action="#" method="GET">
+                <input type="text" name="search" placeholder="Search products...">
+                <button type="submit">Search</button>
+            </form>
+        </section>
         <section class="featured-products">
-            <h2>Featured Products</h2>
             <!-- Display featured products here -->
             <!-- Example: -->
             @foreach (var product in Model.Products)
@@ -35,20 +37,7 @@
             }
             
         </section>
-
-        <section class="search-products">
-            <h2>Search Products</h2>
-            <!-- Search form to search for products -->
-            <form action="#" method="GET">
-                <input type="text" name="search" placeholder="Search products...">
-                <button type="submit">Search</button>
-            </form>
-        </section>
     </main>
-
-    <footer>
-        <p>&copy; 2024 Online Shopping Application. All Rights Reserved.</p>
-    </footer>
 </body>
 </html>
 

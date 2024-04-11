@@ -1,4 +1,5 @@
 ﻿@page
+@using Group5_DBApp.Models
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
@@ -9,7 +10,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Shopping Application</title>
+    <title>Group 5 - Online Shopping Application</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -21,14 +22,15 @@
         <section class="featured-products">
             <h2>Featured Products</h2>
             <!-- Display featured products here -->
-            <!-- Example: -->
-            <div class="product-card">
-                <img src="product1.jpg" alt="Product 1">
-                <h3>Product 1</h3>
-                <p>Description of Product 1</p>
+            @* @foreach (var product in Model.Products)
+            {
+                <div class="product-card">
+                <h3>@product.prod_name</h3>
+                <p>@product.price</p>
                 <button>Add to Cart</button>
-            </div>
+                </div>
             <!-- Repeat for other featured products -->
+            } *@
         </section>
 
         <section class="search-products">
