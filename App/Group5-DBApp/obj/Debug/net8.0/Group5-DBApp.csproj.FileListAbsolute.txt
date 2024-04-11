@@ -29,6 +29,39 @@ C:\Users\apmar\OneDrive\Desktop\CS4092\DDD-Project\app\Group5-DBApp\obj\Debug\ne
 C:\Users\apmar\OneDrive\Desktop\CS4092\DDD-Project\app\Group5-DBApp\obj\Debug\net8.0\Group5-DBApp.pdb
 C:\Users\apmar\OneDrive\Desktop\CS4092\DDD-Project\app\Group5-DBApp\obj\Debug\net8.0\Group5-DBApp.genruntimeconfig.cache
 C:\Users\apmar\OneDrive\Desktop\CS4092\DDD-Project\app\Group5-DBApp\obj\Debug\net8.0\ref\Group5-DBApp.dll
+<<<<<<< HEAD
+C:\Users\samw1\DatabaseProject\group5\App\Group5-DBApp\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\samw1\DatabaseProject\group5\App\Group5-DBApp\bin\Debug\net8.0\appsettings.json
+C:\Users\samw1\DatabaseProject\group5\App\Group5-DBApp\bin\Debug\net8.0\Group5-DBApp.staticwebassets.runtime.json
+C:\Users\samw1\DatabaseProject\group5\App\Group5-DBApp\bin\Debug\net8.0\Group5-DBApp.exe
+C:\Users\samw1\DatabaseProject\group5\App\Group5-DBApp\bin\Debug\net8.0\Group5-DBApp.deps.json
+C:\Users\samw1\DatabaseProject\group5\App\Group5-DBApp\bin\Debug\net8.0\Group5-DBApp.runtimeconfig.json
+C:\Users\samw1\DatabaseProject\group5\App\Group5-DBApp\bin\Debug\net8.0\Group5-DBApp.dll
+C:\Users\samw1\DatabaseProject\group5\App\Group5-DBApp\bin\Debug\net8.0\Group5-DBApp.pdb
+C:\Users\samw1\DatabaseProject\group5\App\Group5-DBApp\obj\Debug\net8.0\Group5-DBApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\samw1\DatabaseProject\group5\App\Group5-DBApp\obj\Debug\net8.0\Group5-DBApp.AssemblyInfoInputs.cache
+C:\Users\samw1\DatabaseProject\group5\App\Group5-DBApp\obj\Debug\net8.0\Group5-DBApp.AssemblyInfo.cs
+C:\Users\samw1\DatabaseProject\group5\App\Group5-DBApp\obj\Debug\net8.0\Group5-DBApp.csproj.CoreCompileInputs.cache
+C:\Users\samw1\DatabaseProject\group5\App\Group5-DBApp\obj\Debug\net8.0\Group5-DBApp.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\samw1\DatabaseProject\group5\App\Group5-DBApp\obj\Debug\net8.0\Group5-DBApp.RazorAssemblyInfo.cache
+C:\Users\samw1\DatabaseProject\group5\App\Group5-DBApp\obj\Debug\net8.0\Group5-DBApp.RazorAssemblyInfo.cs
+C:\Users\samw1\DatabaseProject\group5\App\Group5-DBApp\obj\Debug\net8.0\Group5-DBApp.sourcelink.json
+C:\Users\samw1\DatabaseProject\group5\App\Group5-DBApp\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\samw1\DatabaseProject\group5\App\Group5-DBApp\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\samw1\DatabaseProject\group5\App\Group5-DBApp\obj\Debug\net8.0\staticwebassets\msbuild.Group5-DBApp.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\samw1\DatabaseProject\group5\App\Group5-DBApp\obj\Debug\net8.0\staticwebassets\msbuild.build.Group5-DBApp.props
+C:\Users\samw1\DatabaseProject\group5\App\Group5-DBApp\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.Group5-DBApp.props
+C:\Users\samw1\DatabaseProject\group5\App\Group5-DBApp\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.Group5-DBApp.props
+C:\Users\samw1\DatabaseProject\group5\App\Group5-DBApp\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\samw1\DatabaseProject\group5\App\Group5-DBApp\obj\Debug\net8.0\scopedcss\Pages\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\samw1\DatabaseProject\group5\App\Group5-DBApp\obj\Debug\net8.0\scopedcss\bundle\Group5-DBApp.styles.css
+C:\Users\samw1\DatabaseProject\group5\App\Group5-DBApp\obj\Debug\net8.0\scopedcss\projectbundle\Group5-DBApp.bundle.scp.css
+C:\Users\samw1\DatabaseProject\group5\App\Group5-DBApp\obj\Debug\net8.0\Group5-DBApp.dll
+C:\Users\samw1\DatabaseProject\group5\App\Group5-DBApp\obj\Debug\net8.0\refint\Group5-DBApp.dll
+C:\Users\samw1\DatabaseProject\group5\App\Group5-DBApp\obj\Debug\net8.0\Group5-DBApp.pdb
+C:\Users\samw1\DatabaseProject\group5\App\Group5-DBApp\obj\Debug\net8.0\Group5-DBApp.genruntimeconfig.cache
+C:\Users\samw1\DatabaseProject\group5\App\Group5-DBApp\obj\Debug\net8.0\ref\Group5-DBApp.dll
+=======
 C:\Users\apmar\OneDrive\Desktop\CS4092\DDD-Project\group5\App\Group5-DBApp\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\apmar\OneDrive\Desktop\CS4092\DDD-Project\group5\App\Group5-DBApp\bin\Debug\net8.0\appsettings.json
 C:\Users\apmar\OneDrive\Desktop\CS4092\DDD-Project\group5\App\Group5-DBApp\bin\Debug\net8.0\Group5-DBApp.staticwebassets.runtime.json
@@ -353,3 +386,4 @@ C:\Users\apmar\OneDrive\Desktop\CS4092\DDD-Project\group5\App\Group5-DBApp\bin\D
 C:\Users\apmar\OneDrive\Desktop\CS4092\DDD-Project\group5\App\Group5-DBApp\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\apmar\OneDrive\Desktop\CS4092\DDD-Project\group5\App\Group5-DBApp\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\apmar\OneDrive\Desktop\CS4092\DDD-Project\group5\App\Group5-DBApp\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+>>>>>>> a5cdf50f3837c9ca9e574f80043bbb7974366c9c

@@ -1,5 +1,11 @@
 {
   "version": 2,
+<<<<<<< HEAD
+  "dgSpecHash": "nYct69E2VEyCnbv8Emirg0/qwfSXCTfzXBpjA7aXgvGBbL5G6EjwR/km+PWp948Yc2UXwHTGMrT558KWIqkNHw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\samw1\\DatabaseProject\\group5\\App\\Group5-DBApp\\Group5-DBApp.csproj",
+  "expectedPackageFiles": [],
+=======
   "dgSpecHash": "8VrHRCWX7NDGCIUwkDVhjTEoUFpUkxwN5mnY1qo5MutMiWMgAi6G6xMERmHtlemDs0KSRxkFApOSny9URCzorA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Huy\\group5\\App\\Group5-DBApp\\Group5-DBApp.csproj",
@@ -87,5 +93,6 @@
     "C:\\Users\\Huy\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "C:\\Users\\Huy\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
   ],
+>>>>>>> a5cdf50f3837c9ca9e574f80043bbb7974366c9c
   "logs": []
 }
