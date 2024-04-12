@@ -4383,25 +4383,11 @@
     ]
   },
   "packageFolders": {
-<<<<<<< HEAD
-    "C:\\Users\\samw1\\.nuget\\packages\\": {}
-=======
     "C:\\Users\\Huy\\.nuget\\packages\\": {}
->>>>>>> a5cdf50f3837c9ca9e574f80043bbb7974366c9c
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
-      "projectUniqueName": "C:\\Users\\samw1\\DatabaseProject\\group5\\App\\Group5-DBApp\\Group5-DBApp.csproj",
-      "projectName": "Group5-DBApp",
-      "projectPath": "C:\\Users\\samw1\\DatabaseProject\\group5\\App\\Group5-DBApp\\Group5-DBApp.csproj",
-      "packagesPath": "C:\\Users\\samw1\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\samw1\\DatabaseProject\\group5\\App\\Group5-DBApp\\obj\\",
-      "projectStyle": "PackageReference",
-      "configFilePaths": [
-        "C:\\Users\\samw1\\AppData\\Roaming\\NuGet\\NuGet.Config"
-=======
       "projectUniqueName": "C:\\Users\\Huy\\group5\\App\\Group5-DBApp\\Group5-DBApp.csproj",
       "projectName": "Group5-DBApp",
       "projectPath": "C:\\Users\\Huy\\group5\\App\\Group5-DBApp\\Group5-DBApp.csproj",
@@ -4410,7 +4396,6 @@
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Huy\\AppData\\Roaming\\NuGet\\NuGet.Config"
->>>>>>> a5cdf50f3837c9ca9e574f80043bbb7974366c9c
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -4473,12 +4458,16 @@
             "privateAssets": "all"
           }
         },
-<<<<<<< HEAD
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.203/PortableRuntimeIdentifierGraph.json"
-=======
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
->>>>>>> a5cdf50f3837c9ca9e574f80043bbb7974366c9c
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\Huy\\group5\\App\\Group5-DBApp\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
