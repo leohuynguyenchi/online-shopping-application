@@ -21,15 +21,14 @@
     <main>
         <!-- Search Bar -->
         <section class="search-products">
-        <form method="GET">
-            <input type="text" name="search" placeholder="Search products..." value="@Model.SearchTerm">
-            <button type="submit">Search</button>
+        <form action="#" method="GET">
+            <input type="text" name="search" id="searchInput" placeholder="Search products...">
         </form>
         </section>
-        <section class="featured-products">
+        <section class="featured-products" id="featured-products">
             <h2>Featured Products</h2>
             <!-- Display products that are $50 or more in price -->
-            @foreach (var product in Model.Products.Where(p => p.price >= 50))
+            @foreach (var product in Model.Products)
             {
                 <div class="product-card">
                 <h3>@product.prod_name</h3>
@@ -39,6 +38,26 @@
             }
         </section>
     </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const productContainer = document.getElementById('featured-products');
+
+            searchInput.addEventListener('input', function(event) {
+                const searchQuery = event.target.value.trim().toLowerCase();
+
+                // Select all product cards within the product container
+                const productCards = productContainer.querySelectorAll('.product-card');
+
+                productCards.forEach(function(productCard) {
+                    const productName = productCard.querySelector('h3').textContent.trim().toLowerCase();
+                    const isVisible = productName.includes(searchQuery);
+                    productCard.style.display = isVisible ? 'block' : 'none';
+                });
+            });
+        });
+    </script>
 </body>
 </html>
 

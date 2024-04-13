@@ -10,17 +10,9 @@ public class IndexModel(ILogger<IndexModel> logger, DataContext context) : PageM
     private readonly ILogger<IndexModel> _logger = logger;
     private readonly DataContext _context = context;
     public IList<Product> Products { get; set; }
-    public string SearchTerm { get; set; }
 
     public async Task OnGet()
-{
-    if (string.IsNullOrEmpty(SearchTerm))
     {
         Products = await _context.Products.ToListAsync();
     }
-    else
-    {
-        Products = await _context.Products.Where(p => p.prod_name.ToLower().Contains(SearchTerm.ToLower())).ToListAsync();
-    }
-}
 }

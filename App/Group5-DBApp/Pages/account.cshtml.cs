@@ -10,11 +10,12 @@ public class AccountModel(ILogger<AccountModel> logger, DataContext context) : P
     private readonly ILogger<AccountModel> _logger = logger;
     private readonly DataContext _context = context;
 
-    public IList<CreditCards> CreditCards { get; set; }
-
+    public IList<CreditCard> CreditCards { get; set; }
+    public IList <Users> Users { get; set; }
     public async Task OnGet()
     {
-        //CreditCards = await _context.CreditCards.ToListAsync();
+        CreditCards = await _context.CreditCards.ToListAsync();
+        Users = await _context.Users.ToListAsync();
     }
 }
 

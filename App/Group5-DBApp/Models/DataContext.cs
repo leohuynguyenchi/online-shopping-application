@@ -10,7 +10,7 @@ namespace Group5_DBApp.Models
         }
         public DbSet<Product> Products { get; set; } // DbSet for Product entity
 
-        public DbSet<CreditCards> CreditCards { get; set;}  //Dbset for the CreditCard Entity
+        public DbSet<CreditCard> CreditCards { get; set;}  //Dbset for the CreditCard Entity
 
         public DbSet<Users> Users { get; set; } // Dbset for the Users entity
 
@@ -40,9 +40,9 @@ namespace Group5_DBApp.Models
                 new Product { prod_id = 5, prod_name = "Molten BGG Composite Basketball", price = 44.99M }
             );
 
-            modelBuilder.Entity<CreditCards>().HasData(
-                new CreditCards { card_id = 1, user_id = 1, card_number = "1234123412341234", expire_date = "2025-12-31"},
-                new CreditCards { card_id = 2, user_id = 2, card_number = "5678567856785678", expire_date = "2025-01-31"}
+            modelBuilder.Entity<CreditCard>().HasData(
+                new CreditCard { CardId = 1, UserId = 1, CardNumber = "1234123412341234", ExpireDate = "2025-12-31"},
+                new CreditCard { CardId = 2, UserId = 2, CardNumber = "5678567856785678", ExpireDate = "2025-01-31"}
             );
 
             modelBuilder.Entity<Users>().HasData(
@@ -54,8 +54,6 @@ namespace Group5_DBApp.Models
                 new Warehouse { warehouse_id = 1, address = "123 Main Street", capacity = 100},
                 new Warehouse { warehouse_id = 2, address = "456 Elm Avenue", capacity = 75}
             );
-
-            // need to add data for the orders, stock, and suppliers - Pipo
         }
     }
 }
