@@ -1,5 +1,6 @@
 @page
 @using Group5_DBApp.Models
+@using Group5_DBApp.Pages
 @model Group5_DBApp.Pages.AccountModel
 @{
     ViewData["Title"] = "Account Info";
@@ -26,11 +27,10 @@
         <p>@foreach (var creditCards in Model.CreditCards.Where(c => c.UserId == Model.Users.FirstOrDefault()?.user_id))
             {
                 <div class="credit-card">
-                <h3>@creditCards.UserId</h3>
-                <p>@creditCards.CardNumber</p>
-                <p>@creditCards.ExpireDate</p>
-                <button>Update Credit Card</button>
-                <br>
+                @* <h3>@creditCards.UserId</h3> *@
+                <p>Card Number: @creditCards.CardNumber</p>
+                <p>Expiration Date: @creditCards.ExpireDate</p>
+                <button class="update-credit-card-btn" data-card-id="@creditCards.CardId">Update Credit Card</button>
                 <br>
                 </div>
             }
@@ -51,5 +51,47 @@
         <br>
         <br>
     </main>
+    <div id="updateCreditCardModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form id="updateCreditCardForm" method="post" asp-page-handler="UpdateCreditCard">
+                <input type="hidden" id="cardIdInput" name="CreditCardId" />
+                <label for="updatedCardNumber">Card Number:</label>
+                <input type="text" id="updatedCardNumber" name="CardNumber" />
+                <br>
+                <label for="updatedExpireDate">Expiration Date:</label>
+                <input type="text" id="updatedExpireDate" name="ExpireDate" />
+                <br>
+                <button type="submit">Update Credit Card</button>
+            </form>
+        </div>
+    </div>
 </body>
+<script>
+// Get the modal
+    var modal = document.getElementById("updateCreditCardModal");
+    var btns = document.getElementsByClassName("update-credit-card-btn");
+    var span = document.getElementsByClassName("close")[0];
+
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].onclick = function() {
+            var cardId = this.getAttribute("data-card-id");
+            document.getElementById("cardIdInput").value = cardId;
+
+            modal.style.display = "block";
+        }
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
 </html>
