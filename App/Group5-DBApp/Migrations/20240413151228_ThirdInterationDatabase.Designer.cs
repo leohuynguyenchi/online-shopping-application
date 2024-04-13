@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Group5_DBApp.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240411015800_SecondInterationDatabase")]
-    partial class SecondInterationDatabase
+    [Migration("20240413151228_ThirdInterationDatabase")]
+    partial class ThirdInterationDatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,39 +20,39 @@ namespace Group5_DBApp.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.4");
 
-            modelBuilder.Entity("Group5_DBApp.Models.CreditCards", b =>
+            modelBuilder.Entity("Group5_DBApp.Models.CreditCard", b =>
                 {
-                    b.Property<decimal>("card_id")
+                    b.Property<int>("CardId")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("CardNumber")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("card_number")
+                    b.Property<string>("ExpireDate")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("expire_date")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
 
-                    b.Property<decimal>("user_id")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("card_id");
+                    b.HasKey("CardId");
 
                     b.ToTable("CreditCards");
 
                     b.HasData(
                         new
                         {
-                            card_id = 1m,
-                            card_number = "1234123412341234",
-                            expire_date = "2025-12-31",
-                            user_id = 1m
+                            CardId = 1,
+                            CardNumber = "1234123412341234",
+                            ExpireDate = "2025-12-31",
+                            UserId = 1
                         },
                         new
                         {
-                            card_id = 2m,
-                            card_number = "5678567856785678",
-                            expire_date = "2025-01-31",
-                            user_id = 2m
+                            CardId = 2,
+                            CardNumber = "5678567856785678",
+                            ExpireDate = "2025-01-31",
+                            UserId = 2
                         });
                 });
 

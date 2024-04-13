@@ -19,26 +19,37 @@
     </header>
 
     <main>
-        <h2>Hello, [username goes here]</h2>
+        <br>
+        <h2>Hello, @Model.Users.FirstOrDefault()?.username</h2>
         <br>
         <h3>Credit Card Information:</h3>
-        <p>[Credit Card Owner]</p>
-        @* <p>@foreach (var creditCards in Model.CreditCards)
+        <p>@foreach (var creditCards in Model.CreditCards)
             {
                 <div class="credit-card">
-                <h3>@creditCards.user_id</h3>
-                <p>@creditCards.card_number</p>
-                <p>@creditCards.expire_date</p>
+                <h3>@creditCards.UserId</h3>
+                <p>@creditCards.CardNumber</p>
+                <p>@creditCards.ExpireDate</p>
                 <button>Update Credit Card</button>
+                <br>
+                <br>
                 </div>
             }
-        </p> *@
+        </p>
         <br>
         <br>
         <h3>Address Information:</h3>
-        <p>[Address]</p>
+        <p>@foreach (var users in Model.Users)
+            {
+                <div class="credit-card">
+                <h3>@users.home_address</h3>
+                <button>Update Address</button>
+                <br>
+                <br>
+                </div>
+            }
+        </p>
         <br>
-        <button>Update Address Information</button>
+        <br>
     </main>
 
     <footer>

@@ -7,7 +7,7 @@
 namespace Group5_DBApp.Migrations
 {
     /// <inheritdoc />
-    public partial class SecondInterationDatabase : Migration
+    public partial class ThirdInterationDatabase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,14 +16,15 @@ namespace Group5_DBApp.Migrations
                 name: "CreditCards",
                 columns: table => new
                 {
-                    card_id = table.Column<decimal>(type: "TEXT", nullable: false),
-                    user_id = table.Column<decimal>(type: "TEXT", nullable: false),
-                    card_number = table.Column<string>(type: "TEXT", nullable: true),
-                    expire_date = table.Column<string>(type: "TEXT", nullable: true)
+                    CardId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    UserId = table.Column<int>(type: "INTEGER", nullable: false),
+                    CardNumber = table.Column<string>(type: "TEXT", nullable: true),
+                    ExpireDate = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CreditCards", x => x.card_id);
+                    table.PrimaryKey("PK_CreditCards", x => x.CardId);
                 });
 
             migrationBuilder.CreateTable(
@@ -121,11 +122,11 @@ namespace Group5_DBApp.Migrations
 
             migrationBuilder.InsertData(
                 table: "CreditCards",
-                columns: new[] { "card_id", "card_number", "expire_date", "user_id" },
+                columns: new[] { "CardId", "CardNumber", "ExpireDate", "UserId" },
                 values: new object[,]
                 {
-                    { 1m, "1234123412341234", "2025-12-31", 1m },
-                    { 2m, "5678567856785678", "2025-01-31", 2m }
+                    { 1, "1234123412341234", "2025-12-31", 1 },
+                    { 2, "5678567856785678", "2025-01-31", 2 }
                 });
 
             migrationBuilder.InsertData(
