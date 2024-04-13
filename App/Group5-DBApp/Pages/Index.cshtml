@@ -19,33 +19,26 @@
     </header>
 
     <main>
+        <!-- Search Bar -->
+        <section class="search-products">
+        <form method="GET">
+            <input type="text" name="search" placeholder="Search products..." value="@Model.SearchTerm">
+            <button type="submit">Search</button>
+        </form>
+        </section>
         <section class="featured-products">
             <h2>Featured Products</h2>
-            <!-- Display featured products here -->
-            @* @foreach (var product in Model.Products)
+            <!-- Display products that are $50 or more in price -->
+            @foreach (var product in Model.Products.Where(p => p.price >= 50))
             {
                 <div class="product-card">
                 <h3>@product.prod_name</h3>
-                <p>@product.price</p>
+                <p>$@product.price</p>
                 <button>Add to Cart</button>
                 </div>
-            <!-- Repeat for other featured products -->
-            } *@
-        </section>
-
-        <section class="search-products">
-            <h2>Search Products</h2>
-            <!-- Search form to search for products -->
-            <form action="#" method="GET">
-                <input type="text" name="search" placeholder="Search products...">
-                <button type="submit">Search</button>
-            </form>
+            }
         </section>
     </main>
-
-    <footer>
-        <p>&copy; 2024 Online Shopping Application. All Rights Reserved.</p>
-    </footer>
 </body>
 </html>
 

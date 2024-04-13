@@ -16,26 +16,23 @@
 <body>
     <main>
         <section class="search-products">
-            <!-- Search form to search for products -->
+            <!-- Search Bar -->
             <form action="#" method="GET">
                 <input type="text" name="search" placeholder="Search products...">
                 <button type="submit">Search</button>
             </form>
         </section>
         <section class="featured-products">
-            <!-- Display featured products here -->
-            <!-- Example: -->
+            <!-- Products -->
             @foreach (var product in Model.Products)
             {
                 <div class="product-card">
                 @* <img src="product1.jpg" alt="@product.ProdName"> *@
                 <h3>@product.prod_name</h3>
-                <p>@product.price</p>
+                <p>$@product.price</p>
                 <button>Add to Cart</button>
                 </div>
-            <!-- Repeat for other featured products -->
             }
-            
         </section>
     </main>
 </body>
