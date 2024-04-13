@@ -18,23 +18,40 @@
         <section class="search-products">
             <!-- Search Bar -->
             <form action="#" method="GET">
-                <input type="text" name="search" placeholder="Search products...">
-                <button type="submit">Search</button>
+                <input type="text" name="search" id="searchInput" placeholder="Search products...">
             </form>
         </section>
-        <section class="featured-products">
+        <section class="featured-products" id="featured-products">
             <!-- Products -->
             @foreach (var product in Model.Products)
             {
                 <div class="product-card">
-                @* <img src="product1.jpg" alt="@product.ProdName"> *@
-                <h3>@product.prod_name</h3>
-                <p>$@product.price</p>
-                <button>Add to Cart</button>
+                    <h3>@product.prod_name</h3>
+                    <p>$@product.price</p>
+                    <button>Add to Cart</button>
                 </div>
             }
         </section>
     </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const productContainer = document.getElementById('featured-products');
+
+            searchInput.addEventListener('input', function(event) {
+                const searchQuery = event.target.value.trim().toLowerCase();
+
+                // Select all product cards within the product container
+                const productCards = productContainer.querySelectorAll('.product-card');
+
+                productCards.forEach(function(productCard) {
+                    const productName = productCard.querySelector('h3').textContent.trim().toLowerCase();
+                    const isVisible = productName.includes(searchQuery);
+                    productCard.style.display = isVisible ? 'block' : 'none';
+                });
+            });
+        });
+    </script>
 </body>
 </html>
-
