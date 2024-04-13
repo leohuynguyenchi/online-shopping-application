@@ -18,4 +18,3 @@ public class AccountModel(ILogger<AccountModel> logger, DataContext context) : P
         Users = await _context.Users.ToListAsync();
     }
 }
-

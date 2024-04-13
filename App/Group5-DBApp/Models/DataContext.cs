@@ -22,7 +22,6 @@ namespace Group5_DBApp.Models
 
         public DbSet<Stock> Stock { get; set; } // Dbset for the stock utility
 
-        public string? DbPath {get;}
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if(!optionsBuilder.IsConfigured){

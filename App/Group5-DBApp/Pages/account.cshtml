@@ -23,7 +23,7 @@
         <h2>Hello, @Model.Users.FirstOrDefault()?.username</h2>
         <br>
         <h3>Credit Card Information:</h3>
-        <p>@foreach (var creditCards in Model.CreditCards)
+        <p>@foreach (var creditCards in Model.CreditCards.Where(c => c.UserId == Model.Users.FirstOrDefault()?.user_id))
             {
                 <div class="credit-card">
                 <h3>@creditCards.UserId</h3>
@@ -51,10 +51,5 @@
         <br>
         <br>
     </main>
-
-    <footer>
-        <p>&copy; 2024 Online Shopping Application. All Rights Reserved.</p>
-    </footer>
 </body>
 </html>
-
