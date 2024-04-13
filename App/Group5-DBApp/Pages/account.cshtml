@@ -57,10 +57,10 @@
             <form id="updateCreditCardForm" method="post" asp-page-handler="UpdateCreditCard">
                 <input type="hidden" id="cardIdInput" name="CreditCardId" />
                 <label for="updatedCardNumber">Card Number:</label>
-                <input type="text" id="updatedCardNumber" name="CardNumber" />
+                <input type="text" id="updatedCardNumber" name="CardNumber" placeholder="Ex: 0000000000000000"/>
                 <br>
                 <label for="updatedExpireDate">Expiration Date:</label>
-                <input type="text" id="updatedExpireDate" name="ExpireDate" />
+                <input type="text" id="updatedExpireDate" name="ExpireDate" placeholder="Ex: 2000-12-31"/>
                 <br>
                 <button type="submit">Update Credit Card</button>
             </form>
