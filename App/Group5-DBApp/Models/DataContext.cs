@@ -45,8 +45,10 @@ namespace Group5_DBApp.Models
             );
 
             modelBuilder.Entity<Users>().HasData(
-                new Users { user_id = 1, user_type = "Customer", username = "John Doe"},
-                new Users { user_id = 2, user_type = "Staff", username = "Dan Johnson"}
+                new Users { user_id = 1, user_type = "Customer", username = "John Doe", home_address = "123 Main St, Anytown, USA", delivery_address = "123 Main St, Anytown, USA", payment_address = "123 Main St, Anytown, USA"},
+                new Users { user_id = 2, user_type = "Customer", username = "Jane Smith", home_address = "456 Elm St, Somecity, USA", delivery_address = "456 Elm St, Somecity, USA", payment_address = "456 Elm St, Somecity, USA"},
+                new Users { user_id = 3, user_type = "Staff", username = "Dan Johnson", salary = 60000, job_title = "Manager", home_address = "789 Oak St, Othercity, USA"},
+                new Users { user_id = 4, user_type = "Staff", username = "Bob Williams", salary = 45000, job_title = "Sales Associate", home_address = "321 Pine St, Anothercity, USA"}
             );
 
             modelBuilder.Entity<Warehouse>().HasData(

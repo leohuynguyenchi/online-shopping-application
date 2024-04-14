@@ -63,10 +63,12 @@ CREATE TABLE Suppliers (
     FOREIGN KEY (prod_id) REFERENCES Product(prod_id)
 );
 
-INSERT INTO Users (userID, userType, user_name) VALUES
-(1, 'Customer', 'John Doe'),
-(2, 'Customer', 'Jane Smith'),
-(3, 'Staff', 'Dan Johnson');
+INSERT INTO Users (userID, userType, user_name, salary, jobTitle, home_address, delivery_address, payment_address)
+VALUES
+    (1, 'Customer', 'John Doe', NULL, NULL, '123 Main St, Anytown, USA', '123 Main St, Anytown, USA', '123 Main St, Anytown, USA'),
+    (2, 'Customer', 'Jane Smith', NULL, NULL, '456 Elm St, Somecity, USA', '456 Elm St, Somecity, USA', '456 Elm St, Somecity, USA'),
+    (3, 'Staff', 'Dan Johnson', 60000.00, 'Manager', '789 Oak St, Othercity, USA', NULL, NULL),
+    (4, 'Staff', 'Bob Williams', 45000.00, 'Sales Associate', '321 Pine St, Anothercity, USA', NULL, NULL);
 
 INSERT INTO CreditCards (cardID, user_ID, cardNumber, expiryDate) VALUES
 (1, 1, '1234567890123456', '2025-12-31'),
