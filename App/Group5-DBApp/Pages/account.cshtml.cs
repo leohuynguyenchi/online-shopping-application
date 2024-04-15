@@ -41,26 +41,27 @@ public class AccountModel(ILogger<AccountModel> logger, DataContext context) : P
         return RedirectToPage();
     }
 
-    // public async Task<IActionResult> OnPostUpdateAddressAsync(int user_id)
-    // {
-    //     var user = await _context.Users.FindAsync(user_id);
+    public async Task<IActionResult> OnPostUpdateAddressAsync(decimal userId)
+    {
+        var user = await _context.Users.FindAsync(userId);
 
-    //     if (creditCard == null)
-    //     {
-    //         return NotFound();
-    //     }
+        if (user == null)
+        {
+            return NotFound();
+        }
 
-    //     if (!ModelState.IsValid)
-    //     {
-    //         return Page();
-    //     }
+        if (!ModelState.IsValid)
+        {
+            return Page();
+        }
 
-    //     creditCard.CardNumber = Request.Form["CardNumber"];
-    //     creditCard.ExpireDate = Request.Form["ExpireDate"];
+        user.home_address = Request.Form["homeAddress"];
+        user.delivery_address = Request.Form["deliveryAddress"];
+        user.payment_address = Request.Form["paymentAddress"];
 
-    //     _context.CreditCards.Update(creditCard);
-    //     await _context.SaveChangesAsync();
+        _context.Users.Update(user);
+        await _context.SaveChangesAsync();
 
-    //     return RedirectToPage();
-    // }
+        return RedirectToPage();
+    }
 }

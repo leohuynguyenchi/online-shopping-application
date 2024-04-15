@@ -85,46 +85,60 @@
     </div>
 </body>
 <script>
-// Get the modal
-    var updateCreditCard = document.getElementById("updateCreditCardModal");
-    var updateAddress = document.getElementById("updateAddressModal");
-    var updateCreditCardButton = document.getElementsByClassName("update-credit-card-btn");
-    var updateAddressButton = document.getElementsByClassName("update-address-btn");
+    // Get the modals
+    var updateCreditCardModal = document.getElementById("updateCreditCardModal");
+    var updateAddressModal = document.getElementById("updateAddressModal");
+    
+    // Get the buttons
+    var updateCreditCardButtons = document.getElementsByClassName("update-credit-card-btn");
+    var updateAddressButtons = document.getElementsByClassName("update-address-btn");
 
-    var span = document.getElementsByClassName("close")[0];
+    // Get the close buttons
+    var closeButtons = document.getElementsByClassName("close");
 
-    for (var i = 0; i < updateCreditCardButton.length; i++) {
-        updateCreditCardButton[i].onclick = function() {
+    // Function to open the update credit card modal
+    function openUpdateCreditCardModal(cardId) {
+        document.getElementById("cardIdInput").value = cardId;
+        updateCreditCardModal.style.display = "block";
+    }
+
+    // Function to open the update address modal
+    function openUpdateAddressModal(userId) {
+        document.getElementById("userId").value = userId;
+        updateAddressModal.style.display = "block";
+    }
+
+    // Add click event listener to each "Update Credit Card" button
+    for (var i = 0; i < updateCreditCardButtons.length; i++) {
+        updateCreditCardButtons[i].onclick = function() {
             var cardId = this.getAttribute("data-card-id");
-            document.getElementById("cardIdInput").value = cardId;
-            updateCreditCard.style.display = "block";
-        }
+            openUpdateCreditCardModal(cardId);
+        };
     }
 
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-        updateCreditCard.style.display = "none";
+    // Add click event listener to each "Update Address" button
+    for (var i = 0; i < updateAddressButtons.length; i++) {
+        updateAddressButtons[i].onclick = function() {
+            var userId = this.getAttribute("data-user-id");
+            openUpdateAddressModal(userId);
+        };
     }
 
-    // When the user clicks anywhere outside of the modal, close it
+    // Add click event listener to each close button
+    for (var i = 0; i < closeButtons.length; i++) {
+        closeButtons[i].onclick = function() {
+            updateCreditCardModal.style.display = "none";
+            updateAddressModal.style.display = "none";
+        };
+    }
+
+    // Close the modal when the user clicks anywhere outside of it
     window.onclick = function(event) {
-        if (event.target == updateCreditCard) {
-            updateCreditCard.style.display = "none";
+        if (event.target == updateCreditCardModal) {
+            updateCreditCardModal.style.display = "none";
+        } else if (event.target == updateAddressModal) {
+            updateAddressModal.style.display = "none";
         }
-        else if (event.target == updateAddress){
-            updateAddress.style.display = "none";
-        }
-    }
-
-    for (var i = 0; i < updateAddressButton.length; i++) {
-        updateAddressButton[i].onclick = function() {
-            var userAddress = this.getAttribute("data-user-id");
-            document.getElementById("userId").value = userAddress;
-            updateAddress.style.display = "block";
-        }
-    }
-    span.onclick = function() {
-        updateAddress.style.display = "none";
     }
 </script>
 </html>
