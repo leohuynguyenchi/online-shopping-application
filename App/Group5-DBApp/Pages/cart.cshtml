@@ -18,7 +18,25 @@
     </header>
 
     <main>
-        <h2>Cart Info Goes Here</h2>
+        <br>
+        <section class="orders" id="orders">
+            <h2>Current Cart/Orders</h2>
+            @foreach (var orders in Model.Orders)
+            {
+                <div class="orders-list">
+                <h3>@orders.order_id</h3>
+                <p>$@orders.user_id</p>
+                <p>$@orders.prod_id</p>
+                <p>$@orders.quantity</p>
+                <p>$@orders.status</p>
+                <p>$@orders.delivery_type</p>
+                <p>$@orders.delivery_price</p>
+                <p>$@orders.ship_date</p>
+                <p>$@orders.delivery_date</p>
+                </div>
+                <br>
+            }
+        </section>
     </main>
 </body>
 </html>

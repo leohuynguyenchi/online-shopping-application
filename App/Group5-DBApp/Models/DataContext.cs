@@ -55,6 +55,16 @@ namespace Group5_DBApp.Models
                 new Warehouse { warehouse_id = 1, address = "123 Main Street", capacity = 100},
                 new Warehouse { warehouse_id = 2, address = "456 Elm Avenue", capacity = 75}
             );
+
+            modelBuilder.Entity<Stock>().HasData(
+                new Stock { prod_id = 1, warehouse_id = 1, quantity = 50},
+                new Stock { prod_id = 2, warehouse_id = 2, quantity = 50}
+            );
+
+            modelBuilder.Entity<Suppliers>().HasData(
+                new Suppliers { name = "Supplier A", prod_id = 1, price = 25.99M, address = "789 Oak Street"},
+                new Suppliers { name = "Supplier B", prod_id = 2, price = 89.99M, address = "101 Maple Avenue"}
+            );
         }
     }
 }
