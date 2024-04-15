@@ -16,8 +16,30 @@ namespace Group5_DBApp.Pages
         public async Task OnGet()
         {
             Users = await _context.Users.ToListAsync();
-            Products = await _context.Products.ToListAsync();
+            Products = await _context.Products.ToListAsync();       
             // Add any backend logic for the staff dashboard page here
         }
+        public async Task<IActionResult> OnPostModifyProductDescriptionAsync(string productName)
+        {
+            var product = await _context.Products.FirstOrDefaultAsync(p => p.prod_name == productName);
+
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            product.prod_name = Request.Form["productName"];
+
+            _context.Products.Update(product);
+            await _context.SaveChangesAsync();
+
+            return RedirectToPage();
+        }
+
     }
 }
