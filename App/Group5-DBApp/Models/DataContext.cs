@@ -57,13 +57,13 @@ namespace Group5_DBApp.Models
             );
 
             modelBuilder.Entity<Stock>().HasData(
-                new Stock { prod_id = 1, warehouse_id = 1, quantity = 50},
-                new Stock { prod_id = 2, warehouse_id = 2, quantity = 50}
+                new Stock { stock_id = 1, prod_id = 1, warehouse_id = 1, quantity = 50},
+                new Stock { stock_id = 2, prod_id = 2, warehouse_id = 2, quantity = 50}
             );
 
             modelBuilder.Entity<Suppliers>().HasData(
-                new Suppliers { name = "Supplier A", prod_id = 1, price = 25.99M, address = "789 Oak Street"},
-                new Suppliers { name = "Supplier B", prod_id = 2, price = 89.99M, address = "101 Maple Avenue"}
+                new Suppliers { sup_id = 1, name = "Supplier A", prod_id = 1, price = 25.99M, address = "789 Oak Street"},
+                new Suppliers { sup_id = 2, name = "Supplier B", prod_id = 2, price = 89.99M, address = "101 Maple Avenue"}
             );
         }
     }
