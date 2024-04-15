@@ -3,10 +3,11 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Register DataContext Service
 builder.Services.AddDbContext<DataContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
-
+// Register ProductService
+builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddRazorPages();
 
 var app = builder.Build();

@@ -33,7 +33,9 @@
                         <p id="prod_price">$@product.price</p>
                         <button class="modify-description-btn" data-product-id="@product.prod_id">Modify Product Description</button>
                         <button class="modify-price-btn" data-product-price-id="@product.prod_id">Modify Price</button>
-                        <button class="delete-product-btn" data-delete-product-id="@product.prod_id">Delete Product</button>
+                        <form method="post">
+                            <button type="submit" class="delete-product-btn" name="productId" value="@product.prod_id">Delete Product</button>
+                        </form>
                     </div>
                 }
             }
