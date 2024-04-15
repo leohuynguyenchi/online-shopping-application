@@ -12,18 +12,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Shopping Application</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="~/wwwroot/js/site.js"></script>
 </head>
 <h1>Welcome to the Staff Dashboard</h1>
 <body>
     <main>
+        <main>
+        <section class="search-products">
+            <!-- Search Bar -->
+            <form action="#" method="GET">
+                <input type="text" name="search" id="searchInput" placeholder="Search products...">
+            </form>
+        </section>
+        <section class="featured-products" id="featured-products">
+            <!-- Products -->
+            @foreach (var product in Model.Products)
+            {
+                <div class="product-card">
+                    <h3>@product.prod_name</h3>
+                    <p>$@product.price</p>
+                    <button>Modify Product Description</button>
+                    <button>Modify Price</button>
+                    <button>Delete Product</button>
+                </div>
+            }
+        </section>
         <br>
-        <h2>Hello,</h2>
         <br>
-        <h3>Credit Card Information:</h3>
+        <button>Add Products to Store</button>
+        <button>Add Stock to Warehouse</button>
         <br>
-        <br>
-        <h3>Address Information:</h3>
-        
         <br>
     </main>
 </body>

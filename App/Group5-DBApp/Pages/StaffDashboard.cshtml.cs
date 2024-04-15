@@ -11,10 +11,12 @@ namespace Group5_DBApp.Pages
         private readonly ILogger<StaffDashboardModel> _logger = logger;
         private readonly DataContext _context = context;
         public IList <Users> Users { get; set; }
+        public IList<Product> Products { get; set; }
 
         public async Task OnGet()
         {
             Users = await _context.Users.ToListAsync();
+            Products = await _context.Products.ToListAsync();
             // Add any backend logic for the staff dashboard page here
         }
     }

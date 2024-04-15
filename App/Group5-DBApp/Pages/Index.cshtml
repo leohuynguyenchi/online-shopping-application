@@ -12,6 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Group 5 - Online Shopping Application</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="~/wwwroot/js/site.js"></script>
 </head>
 <body>
     <header>
@@ -37,25 +38,5 @@
             }
         </section>
     </main>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const searchInput = document.getElementById('searchInput');
-            const productContainer = document.getElementById('featured-products');
-
-            searchInput.addEventListener('input', function(event) {
-                const searchQuery = event.target.value.trim().toLowerCase();
-
-                // Select all product cards within the product container
-                const productCards = productContainer.querySelectorAll('.product-card');
-
-                productCards.forEach(function(productCard) {
-                    const productName = productCard.querySelector('h3').textContent.trim().toLowerCase();
-                    const isVisible = productName.includes(searchQuery);
-                    productCard.style.display = isVisible ? 'block' : 'none';
-                });
-            });
-        });
-    </script>
 </body>
 </html>
