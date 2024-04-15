@@ -20,11 +20,6 @@
     </header>
 
     <main>
-        <form method="post" asp-page-handler="Login">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" />
-            <button type="submit">Login</button>
-        </form>
         <br>
         <h2>Hello, @Model.Users.FirstOrDefault()?.username</h2>
         <br>
