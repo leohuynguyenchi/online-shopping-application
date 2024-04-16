@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Huy\\group5\\App\\Group5-DBApp\\Group5-DBApp.csproj": {}
+    "C:\\Users\\apmar\\OneDrive\\Desktop\\CS4092\\DDD-Project\\group5\\App\\Group5-DBApp\\Group5-DBApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Huy\\group5\\App\\Group5-DBApp\\Group5-DBApp.csproj": {
+    "C:\\Users\\apmar\\OneDrive\\Desktop\\CS4092\\DDD-Project\\group5\\App\\Group5-DBApp\\Group5-DBApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Huy\\group5\\App\\Group5-DBApp\\Group5-DBApp.csproj",
+        "projectUniqueName": "C:\\Users\\apmar\\OneDrive\\Desktop\\CS4092\\DDD-Project\\group5\\App\\Group5-DBApp\\Group5-DBApp.csproj",
         "projectName": "Group5-DBApp",
-        "projectPath": "C:\\Users\\Huy\\group5\\App\\Group5-DBApp\\Group5-DBApp.csproj",
-        "packagesPath": "C:\\Users\\Huy\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Huy\\group5\\App\\Group5-DBApp\\obj\\",
+        "projectPath": "C:\\Users\\apmar\\OneDrive\\Desktop\\CS4092\\DDD-Project\\group5\\App\\Group5-DBApp\\Group5-DBApp.csproj",
+        "packagesPath": "C:\\Users\\apmar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\apmar\\OneDrive\\Desktop\\CS4092\\DDD-Project\\group5\\App\\Group5-DBApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Huy\\AppData\\Roaming\\NuGet\\NuGet.Config"
