@@ -24,13 +24,21 @@
         </section>
         <section class="featured-products" id="featured-products">
             <!-- Products -->
+            @if (Model.Products != null) {
             @foreach (var product in Model.Products)
             {
                 <div class="product-card">
-                    <h3>@product.prod_name</h3>
-                    <p>$@product.price</p>
-                    <button>Add to Cart</button>
+                    <form id="AddToCartForm" method="post" asp-page-handler="AddToCart">
+                        <h3>@product.prod_name</h3>
+                        <p>$@product.price</p>
+                        <!-- Add a hidden input field to store the product ID -->
+                        <input type="hidden" name="prod_id" value="@product.prod_id" />
+                        <!-- Change the button type to submit -->
+                        <button type="submit" id="AddToCart">Add to Cart</button>
+                    </form>
                 </div>
+
+            }
             }
         </section>
     </main>
