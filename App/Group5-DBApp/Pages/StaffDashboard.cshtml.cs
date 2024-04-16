@@ -93,5 +93,24 @@ namespace Group5_DBApp.Pages
 
             return RedirectToPage();
         }
+        public async Task<IActionResult> OnPostAddProductAsync(string productName, decimal productPrice)
+        {
+            var maxProdId = await _context.Products.MaxAsync(p => (int?)p.prod_id);
+            // Create a new Product object
+            var newProdId = maxProdId.GetValueOrDefault() + 1;
+            var newProduct = new Product
+            {
+                prod_id = newProdId,
+                prod_name = productName,
+                price = productPrice
+            };
+
+            // Add the new product to the database (database will assign prod_id)
+            _context.Products.Add(newProduct);
+            await _context.SaveChangesAsync();
+
+            // Redirect back to the page
+            return RedirectToPage();
+        }
     }
 }

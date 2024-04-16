@@ -29,7 +29,7 @@
             @if (Model != null && Model.Products != null) {
                 <p>@foreach (var product in Model.Products) {
                     <div class="product-card">
-                        <h3 id="product_name_@product.prod_id">@product.prod_name</h3>
+                        <h3>@product.prod_name</h3>
                         <p>$@product.price</p>
                         <button class="modify-description-btn" data-product-id="@product.prod_id">Modify Product Description</button>
                         <button class="modify-price-btn" data-product-price-id="@product.prod_id">Modify Price</button>
@@ -42,7 +42,7 @@
         </section>
         <br>
         <br>
-        <button>Add Products to Store</button>
+        <button id="addProductBtn">Add Products to Store</button>
         <button>Add Stock to Warehouse</button>
         <br>
         <br>
@@ -81,6 +81,17 @@
             </form>
         </div>
     </div>
+    <div id="addProductForm" style="display: none;">
+    <form method="post" asp-page-handler="AddProduct">
+        <label for="productName">Product Name:</label>
+        <input type="text" id="productName" name="productName" placeholder="Enter product name">
+        <br>
+        <label for="productPrice">Product Price:</label>
+        <input type="number" id="productPrice" name="productPrice" placeholder="Enter product price">
+        <br>
+        <button type="submit">Add Product</button>
+    </form>
+</div>
 </body>
 <script>
     // Get the models, buttons, and a close button
@@ -147,5 +158,9 @@
             deleteProductModal.style.display = "none";
         }
     }
+    document.getElementById('addProductBtn').addEventListener('click', function() {
+        // Show the add product form
+        document.getElementById('addProductForm').style.display = 'block';
+    });
 </script>
 </html>

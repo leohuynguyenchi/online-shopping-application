@@ -1,14 +1,8 @@
 {
   "version": 2,
-<<<<<<< HEAD
   "dgSpecHash": "m50Mjcy/IEIHIZ2hZNqT5P6nb2SgrIdNGA/jqNcrvZW8LrCUntE0adbKwU6dkJgia1wh/muapRRvzzDzM+0VdA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Huy\\group5\\App\\Group5-DBApp\\Group5-DBApp.csproj",
-=======
-  "dgSpecHash": "b3dx4yWbLGMMIK88eD27pk37ppC3CD08zt9yEZpqjkBJd5e8MoiNBRq+tSQ9OMEFbh3UqzrV8hIsvixr39bVQw==",
-  "success": true,
-  "projectFilePath": "C:\\Users\\apmar\\OneDrive\\Desktop\\CS4092\\DDD-Project\\group5\\App\\Group5-DBApp\\Group5-DBApp.csproj",
->>>>>>> e729cde9b29d3b81bbc2a933db8c720be8dfb693
   "expectedPackageFiles": [
     "C:\\Users\\Huy\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Huy\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
@@ -93,5 +87,12 @@
     "C:\\Users\\Huy\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "C:\\Users\\Huy\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\Huy\\group5\\App\\Group5-DBApp\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
