@@ -16,40 +16,15 @@ namespace Group5_DBApp.Pages
 
         public async Task OnGet()
         {
-            await _productService.LogProducts();
+            // await _productService.LogProducts();
             Users = await _context.Users.ToListAsync();
-            Products = await _context.Products.ToListAsync();    
-
-            try
-            {
-                // Retrieve users from the database
-                Users = await _context.Users.ToListAsync();
-
-                // Log information about the retrieved users
-                foreach (var user in Users)
-                {
-                    _logger.LogInformation($"User ID: {user.user_id}, Name: {user.username}");
-                }
-
-                // Retrieve products from the database
-                Products = await _context.Products.ToListAsync();
-
-                // Log information about the retrieved products
-                foreach (var product in Products)
-                {
-                    _logger.LogInformation($"Product ID: {product.prod_id}, Name: {product.prod_name}, Price: {product.price}");
-                }
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "An error occurred while retrieving data");
-                throw; // Rethrow the exception to handle it at a higher level
-            }
+            Products = await _context.Products.ToListAsync();
         }
         
-        public async Task<IActionResult> OnPostModifyProductDescriptionAsync(int productId)
+        public async Task<IActionResult> OnPostModifyProductDescriptionAsync(int productId, string newProductName)
         {
-            var product = await _context.Products.FindAsync(productId);
+
+            var product = await _context.Products.FindAsync(productId, newProductName);
 
             if (product == null)
             {
@@ -61,7 +36,7 @@ namespace Group5_DBApp.Pages
                 return Page();
             }
 
-            product.prod_name = Request.Form["productName"];
+            product.prod_name = newProductName;
 
             _context.Products.Update(product);
             await _context.SaveChangesAsync();
