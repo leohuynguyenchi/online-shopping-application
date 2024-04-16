@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\Huy\\group5\\App\\Group5-DBApp\\wwwroot\\images\\Basketball.png",
+      "PackagePath": "staticwebassets\\images\\Basketball.png"
+    },
+    {
       "Id": "C:\\Users\\Huy\\group5\\App\\Group5-DBApp\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

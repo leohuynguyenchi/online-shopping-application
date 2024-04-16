@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "joheAf19czIvzP9/as1Sgm6ZhxqTMR6oGS1nuS/JloU=",
+  "Hash": "CTTbuuaTS1duysFaIJojtuigqjqpSCGdcdEEBAHe5NQ=",
   "Source": "Group5-DBApp",
   "BasePath": "_content/Group5-DBApp",
   "Mode": "Default",
@@ -91,6 +91,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\Huy\\group5\\App\\Group5-DBApp\\wwwroot\\images\\Basketball.png",
+      "SourceId": "Group5-DBApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Huy\\group5\\App\\Group5-DBApp\\wwwroot\\",
+      "BasePath": "_content/Group5-DBApp",
+      "RelativePath": "images/Basketball.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\Basketball.png"
     },
     {
       "Identity": "C:\\Users\\Huy\\group5\\App\\Group5-DBApp\\wwwroot\\js\\site.js",

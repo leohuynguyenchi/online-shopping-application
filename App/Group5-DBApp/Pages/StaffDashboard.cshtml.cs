@@ -13,12 +13,16 @@ namespace Group5_DBApp.Pages
         private readonly DataContext _context = context;
         public IList <Users> Users { get; set; }
         public IList<Product> Products { get; set; }
+        public IList<Stock> Stock { get; set; }
+        public IList<Warehouse> Warehouse { get; set; }
 
         public async Task OnGet()
         {
             // await _productService.LogProducts();
             Users = await _context.Users.ToListAsync();
             Products = await _context.Products.ToListAsync();
+            Stock = await _context.Stock.ToListAsync();
+            Warehouse = await _context.Warehouse.ToListAsync();
         }
         
         public async Task<IActionResult> OnPostModifyProductDescriptionAsync(int productId, string newProductName)
@@ -111,6 +115,46 @@ namespace Group5_DBApp.Pages
 
             // Redirect back to the page
             return RedirectToPage();
+        }
+        public async Task<IActionResult> OnPostAddStockToWarehouseAsync(decimal prodId, decimal warehouseId, decimal quantity)
+        {
+            // Check if the product exists
+            var product = await _context.Products.FirstOrDefaultAsync(p => p.prod_id == prodId);
+            if (product == null)
+            {
+                return NotFound($"Product with ID {prodId} not found.");
+            }
+
+            // Check if the warehouse exists
+            var warehouse = await _context.Warehouse.FirstOrDefaultAsync(w => w.warehouse_id == warehouseId);
+            if (warehouse == null)
+            {
+                return NotFound($"Warehouse with ID {warehouseId} not found.");
+            }
+
+            // Check if adding this quantity exceeds warehouse capacity (optional)
+            if (warehouse.capacity.HasValue && warehouse.capacity.Value < quantity)
+            {
+                return BadRequest("Adding this quantity exceeds warehouse capacity.");
+            }
+            warehouse.capacity -= quantity;
+            var maxStockId = await _context.Stock.MaxAsync(s => (int?)s.stock_id);
+            // Create a new Product object
+            var newStockId = maxStockId.GetValueOrDefault() + 1;
+            // Create a new stock record
+            var newStock = new Stock
+            {
+                stock_id = newStockId,
+                prod_id = prodId,
+                warehouse_id = warehouseId,
+                quantity = quantity
+            };
+
+            // Add the new stock to the database
+            _context.Stock.Add(newStock);
+            await _context.SaveChangesAsync();
+
+            return RedirectToPage(); // Redirect back to the page after adding stock
         }
     }
 }
