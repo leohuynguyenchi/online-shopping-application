@@ -27,6 +27,14 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapRazorPages();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapRazorPages();
+    endpoints.MapGet("/", context =>
+    {
+        context.Response.Redirect("/Products"); // Redirect to the products page
+        return Task.CompletedTask;
+    });
+});
 
 app.Run();
