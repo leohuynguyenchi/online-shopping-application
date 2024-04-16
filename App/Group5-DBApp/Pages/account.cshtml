@@ -23,14 +23,19 @@
         <br>
         <h2>Hello, @Model.Users.FirstOrDefault()?.username</h2>
         <br>
+        <button>Add New Credit Card</button>
+        <button>Add New Address(es)</button>
+        <br>
+        <br>
+        <br>
         <h3>Credit Card Information:</h3>
         <p>@foreach (var creditCards in Model.CreditCards.Where(c => c.UserId == Model.Users.FirstOrDefault()?.user_id))
             {
                 <div class="credit-card">
-                @* <h3>@creditCards.UserId</h3> *@
                 <p>Card Number: @creditCards.CardNumber</p>
                 <p>Expiration Date: @creditCards.ExpireDate</p>
                 <button class="update-credit-card-btn" data-card-id="@creditCards.CardId">Update Credit Card</button>
+                <button class="update-credit-card-btn" data-card-id="@creditCards.CardId">Delete Credit Card</button>
                 <br>
                 </div>
             }
@@ -45,6 +50,7 @@
                 <p>Delivery Address: @Model.Users.FirstOrDefault()?.delivery_address</p>
                 <p>Payment Address: @Model.Users.FirstOrDefault()?.payment_address</p>
                 <button class="update-address-btn" data-user-id="@Model.Users.FirstOrDefault()?.user_id">Update Address(es)</button>
+                <button class="update-address-btn" data-user-id="@Model.Users.FirstOrDefault()?.user_id">Delete Address(es)</button>
                 <br>
             </div>
         }

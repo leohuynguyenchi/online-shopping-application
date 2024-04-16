@@ -21,12 +21,13 @@
         <br>
         <section class="orders" id="orders">
             <h2>Current Cart/Orders</h2>
+            <br>
+            <br>
             @foreach (var orders in Model.Orders)
             {
                 <div class="orders-list">
-                <h3>@orders.order_id</h3>
-                <p>@orders.user_id</p>
-                <p>@orders.prod_id</p>
+                <h3>Order No: @orders.order_id</h3>
+                <p>Product: @orders.prod_id</p>
                 <p>Quantity: @orders.quantity</p>
                 <p>Status: @orders.status</p>
                 <p>Delivery Type: @orders.delivery_type</p>
