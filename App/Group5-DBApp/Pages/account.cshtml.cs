@@ -89,4 +89,34 @@ public class AccountModel(ILogger<AccountModel> logger, DataContext context) : P
 
         return RedirectToPage();
     }
+
+    public async Task<IActionResult> OnPostDeleteCreditCardAsync(int creditCardId)
+    {
+        var creditCard = await _context.CreditCards.FindAsync(creditCardId);
+
+        if (creditCard == null)
+        {
+            return NotFound();
+        }
+
+        _context.CreditCards.Remove(creditCard);
+        await _context.SaveChangesAsync();
+
+        return RedirectToPage();
+    }
+
+    public async Task<IActionResult> OnPostDeleteAddressAsync(decimal userId)
+    {
+        var addresses = await _context.Users.FindAsync(userId);
+
+        if (addresses == null)
+        {
+            return NotFound();
+        }
+
+        _context.Users.Remove(addresses);
+        await _context.SaveChangesAsync();
+
+        return RedirectToPage();
+    }
 }

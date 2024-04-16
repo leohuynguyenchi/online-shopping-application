@@ -35,7 +35,11 @@
                 <p>Card Number: @creditCards.CardNumber</p>
                 <p>Expiration Date: @creditCards.ExpireDate</p>
                 <button class="update-credit-card-btn" data-card-id="@creditCards.CardId">Update Credit Card</button>
-                <button class="update-credit-card-btn" data-card-id="@creditCards.CardId">Delete Credit Card</button>
+                <br>
+                <br>
+                <form id="deleteCreditCardForm" method="post" asp-page-handler="/account/DeleteCreditCard">
+                <button class="delete-credit-card-btn" data-card-id="@creditCards.CardId">Delete Credit Card</button>
+                </form>
                 <br>
                 </div>
             }
@@ -50,7 +54,11 @@
                 <p>Delivery Address: @Model.Users.FirstOrDefault()?.delivery_address</p>
                 <p>Payment Address: @Model.Users.FirstOrDefault()?.payment_address</p>
                 <button class="update-address-btn" data-user-id="@Model.Users.FirstOrDefault()?.user_id">Update Address(es)</button>
+                <br>
+                <br>
+                <form id="deleteAddressForm" method="post" asp-page-handler="/account/DeleteAddress">
                 <button class="update-address-btn" data-user-id="@Model.Users.FirstOrDefault()?.user_id">Delete Address(es)</button>
+                </form>
                 <br>
             </div>
         }
