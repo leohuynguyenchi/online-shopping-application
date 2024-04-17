@@ -11,6 +11,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Shopping Application</title>
     <link rel="stylesheet" href="styles.css">
+    <script>
+        function placeOrder(orderNo) {
+            // Update status to "Order Received"
+            var statusElement = document.getElementById("status_" + orderNo);
+            statusElement.innerText = "Order Received";
+
+            // Timestamp ship date and delivery date to now
+            var now = new Date();
+            var shipDateElement = document.getElementById("ship_date_" + orderNo);
+            shipDateElement.innerText = now.toLocaleString();
+
+            var deliveryDateElement = document.getElementById("delivery_date_" + orderNo);
+            deliveryDateElement.innerText = now.toLocaleString();
+
+            // Display order placed message
+            alert("Order No: " + orderNo + " has been placed.");
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -21,22 +39,34 @@
         <br>
         <section class="orders" id="orders">
             <h2>Current Cart/Orders</h2>
-            @foreach (var orders in Model.Orders)
+            <br>
+            <br>
+            @foreach (var order in Model.Orders)
             {
                 <div class="orders-list">
-                <h3>@orders.order_id</h3>
-                <p>@orders.user_id</p>
-                <p>@orders.prod_id</p>
-                <p>Quantity: @orders.quantity</p>
-                <p>Status: @orders.status</p>
-                <p>Delivery Type: @orders.delivery_type</p>
-                <p>Delivery Price: @orders.delivery_price</p>
-                <p>Ship Date: @orders.ship_date</p>
-                <p>Delivery Date: @orders.delivery_date</p>
+                    <h3>Order No: @order.order_id</h3>
+                    <p>Product: @GetProductName(order.prod_id)</p>
+                    <p>Quantity: @order.quantity</p>
+                    <p>Status: <span id="status_@order.order_id">@order.status</span></p>
+                    <p>Delivery Type: @order.delivery_type</p>
+                    <p>Delivery Price: @order.delivery_price</p>
+                    <p>Ship Date: <span id="ship_date_@order.order_id">@order.ship_date</span></p>
+                    <p>Delivery Date: <span id="delivery_date_@order.order_id">@order.delivery_date</span></p>
                 </div>
+                <button onclick="placeOrder('@order.order_id')">Place Order</button>
+                <br>
                 <br>
             }
         </section>
     </main>
+
+    @functions {
+        string GetProductName(decimal productId)
+        {
+            // Retrieve product name based on product ID
+            var product = Model.Products.FirstOrDefault(p => p.prod_id == productId);
+            return product != null ? product.prod_name : "Unknown Product";
+        }
+    }
 </body>
 </html>
