@@ -41,23 +41,32 @@
             <h2>Current Cart/Orders</h2>
             <br>
             <br>
-            @foreach (var orders in Model.Orders)
+            @foreach (var order in Model.Orders)
             {
                 <div class="orders-list">
-                    <h3>Order No: @orders.order_id</h3>
-                    <p>Product: @orders.prod_id</p>
-                    <p>Quantity: @orders.quantity</p>
-                    <p>Status: <span id="status_@orders.order_id">@orders.status</span></p>
-                    <p>Delivery Type: @orders.delivery_type</p>
-                    <p>Delivery Price: @orders.delivery_price</p>
-                    <p>Ship Date: <span id="ship_date_@orders.order_id">@orders.ship_date</span></p>
-                    <p>Delivery Date: <span id="delivery_date_@orders.order_id">@orders.delivery_date</span></p>
+                    <h3>Order No: @order.order_id</h3>
+                    <p>Product: @GetProductName(order.prod_id)</p>
+                    <p>Quantity: @order.quantity</p>
+                    <p>Status: <span id="status_@order.order_id">@order.status</span></p>
+                    <p>Delivery Type: @order.delivery_type</p>
+                    <p>Delivery Price: @order.delivery_price</p>
+                    <p>Ship Date: <span id="ship_date_@order.order_id">@order.ship_date</span></p>
+                    <p>Delivery Date: <span id="delivery_date_@order.order_id">@order.delivery_date</span></p>
                 </div>
-                <button onclick="placeOrder('@orders.order_id')">Place Order</button>
+                <button onclick="placeOrder('@order.order_id')">Place Order</button>
                 <br>
                 <br>
             }
         </section>
     </main>
+
+    @functions {
+        string GetProductName(decimal productId)
+        {
+            // Retrieve product name based on product ID
+            var product = Model.Products.FirstOrDefault(p => p.prod_id == productId);
+            return product != null ? product.prod_name : "Unknown Product";
+        }
+    }
 </body>
 </html>

@@ -12,8 +12,10 @@ public class CartModel(ILogger<CartModel> logger, DataContext context) : PageMod
     private readonly DataContext _context = context;
 
     public IList<Orders> Orders { get; set; }
+    public IList<Product> Products { get; set; }
     public async Task OnGet()
     {
         Orders = await _context.Orders.ToListAsync();
+        Products = await _context.Products.ToArrayAsync();
     }
 }
