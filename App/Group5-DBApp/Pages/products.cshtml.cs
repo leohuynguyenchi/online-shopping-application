@@ -39,11 +39,8 @@ public class ProductsModel(ILogger<ProductsModel> logger, DataContext context) :
         order_id = newOrderId,
         prod_id = Convert.ToDecimal(prod_id),
         quantity = 1, // You may need to adjust this based on your application logic
-        status = "Order Received",
         delivery_price = 0.00M,
         delivery_type = "Ground",
-        delivery_date = orderDate.ToString(),
-        ship_date = orderDate.ToString()
         // Set other required fields as needed
     };
 
