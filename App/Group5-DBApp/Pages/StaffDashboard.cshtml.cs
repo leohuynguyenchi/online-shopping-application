@@ -25,29 +25,38 @@ namespace Group5_DBApp.Pages
             Warehouse = await _context.Warehouse.ToListAsync();
         }
         
-        public async Task<IActionResult> OnPostModifyProductDescriptionAsync(decimal prodId, string newProductName)
+        public async Task<IActionResult> OnPostModifyProductDescriptionAsync(string productName)
         {
             // Find the product by its ID
-            var product = await _context.Products.FirstOrDefaultAsync(p => p.prod_id == prodId);
-
+            var product = await _context.Products.FindAsync(productName);
+            _logger.LogInformation($"{product?.prod_name}");
             if (product == null)
             {
+                _logger.LogInformation($"{product?.prod_name}");
+                
                 return NotFound();
             }
 
-            // Update the product's name with the new name
-            product.prod_name = newProductName;
+            if (!ModelState.IsValid)
+            {
+                _logger.LogInformation($"{product.prod_name}");
+                return Page();
+            }
 
+            // Update the product's name with the new name
+            product.prod_name = Request.Form["updateProductName"];
+            _logger.LogInformation($"{product.prod_name}");
             // Update the database
             _context.Products.Update(product);
+            
             await _context.SaveChangesAsync();
 
             // Redirect to the same page or another page
             return RedirectToPage();
         }
-        public async Task<IActionResult> OnPostModifyProductPriceAsync(int prodId, string productPrice)
+        public async Task<IActionResult> OnPostModifyProductPriceAsync(decimal productPrice)
         {
-            var product = await _context.Products.FirstOrDefaultAsync(p => p.prod_id == prodId);
+            var product = await _context.Products.FindAsync(productPrice);
 
             if (product == null)
             {
@@ -58,18 +67,7 @@ namespace Group5_DBApp.Pages
             {
                 return Page();
             }
-
-            // Convert the string value to decimal
-            if (decimal.TryParse(productPrice, out decimal price))
-            {
-                product.price = price;
-            }
-            else
-            {
-                // Handle invalid input
-                ModelState.AddModelError(string.Empty, "Invalid price format.");
-                return Page();
-            }
+            product.price = productPrice;
 
             _context.Products.Update(product);
             await _context.SaveChangesAsync();
@@ -80,9 +78,9 @@ namespace Group5_DBApp.Pages
 #pragma warning disable MVC1001 // Filters cannot be applied to page handler methods
         [ValidateAntiForgeryToken]
 #pragma warning restore MVC1001 // Filters cannot be applied to page handler methods
-        public async Task<IActionResult> OnPostDeleteProductAsync(decimal prodId)
+        public async Task<IActionResult> OnPostDeleteProductAsync(decimal productIdToDelete)
         {
-            var product = await _context.Products.FindAsync(prodId);
+            var product = await _context.Products.FirstOrDefaultAsync(p => p.prod_id == productIdToDelete);
 
             if (product == null)
             {

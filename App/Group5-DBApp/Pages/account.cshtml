@@ -126,6 +126,7 @@
     for (var i = 0; i < updateCreditCardButtons.length; i++) {
         updateCreditCardButtons[i].onclick = function() {
             var cardId = this.getAttribute("data-card-id");
+            console.log(updateCreditCardButtons.length);
             openUpdateCreditCardModal(cardId);
         };
     }
