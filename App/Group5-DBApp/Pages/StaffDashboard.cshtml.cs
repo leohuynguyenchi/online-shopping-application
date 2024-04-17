@@ -5,11 +5,11 @@ using Microsoft.AspNetCore.Mvc;
 namespace Group5_DBApp.Pages
 {
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-    public class StaffDashboardModel(ILogger<StaffDashboardModel> logger, IProductService productService, DataContext context) : PageModel
+    public class StaffDashboardModel(ILogger<StaffDashboardModel> logger, DataContext context) : PageModel
 #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
     {
         private readonly ILogger<StaffDashboardModel> _logger = logger;
-        private readonly IProductService _productService = productService;
+        // private readonly IProductService _productService = productService;
         private readonly DataContext _context = context;
         public IList <Users> Users { get; set; }
         public IList<Product> Products { get; set; }
@@ -25,32 +25,29 @@ namespace Group5_DBApp.Pages
             Warehouse = await _context.Warehouse.ToListAsync();
         }
         
-        public async Task<IActionResult> OnPostModifyProductDescriptionAsync(int productId, string newProductName)
+        public async Task<IActionResult> OnPostModifyProductDescriptionAsync(decimal prodId, string newProductName)
         {
-
-            var product = await _context.Products.FindAsync(productId, newProductName);
+            // Find the product by its ID
+            var product = await _context.Products.FirstOrDefaultAsync(p => p.prod_id == prodId);
 
             if (product == null)
             {
                 return NotFound();
             }
 
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
+            // Update the product's name with the new name
             product.prod_name = newProductName;
 
+            // Update the database
             _context.Products.Update(product);
             await _context.SaveChangesAsync();
 
+            // Redirect to the same page or another page
             return RedirectToPage();
         }
-
-        public async Task<IActionResult> OnPostModifyProductPriceAsync(int productId, string productPrice)
+        public async Task<IActionResult> OnPostModifyProductPriceAsync(int prodId, string productPrice)
         {
-            var product = await _context.Products.FindAsync(productId);
+            var product = await _context.Products.FirstOrDefaultAsync(p => p.prod_id == prodId);
 
             if (product == null)
             {
@@ -83,15 +80,15 @@ namespace Group5_DBApp.Pages
 #pragma warning disable MVC1001 // Filters cannot be applied to page handler methods
         [ValidateAntiForgeryToken]
 #pragma warning restore MVC1001 // Filters cannot be applied to page handler methods
-        public async Task<IActionResult> OnPostDeleteProductAsync(int productId)
+        public async Task<IActionResult> OnPostDeleteProductAsync(decimal prodId)
         {
-            var product = await _context.Products.FindAsync(productId);
+            var product = await _context.Products.FindAsync(prodId);
 
             if (product == null)
             {
                 return NotFound();
             }
-
+            
             _context.Products.Remove(product);
             await _context.SaveChangesAsync();
 

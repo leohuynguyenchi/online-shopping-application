@@ -95,9 +95,7 @@
                         <p>$@product.price</p>
                         <button class="modify-description-btn" data-product-id="@product.prod_id">Modify Product Description</button>
                         <button class="modify-price-btn" data-product-price-id="@product.prod_id">Modify Price</button>
-                        <form method="post">
-                            <button type="submit" class="delete-product-btn" name="deleteProductId" data-delete-product-id="@product.prod_id">Delete Product</button>
-                        </form>
+                        <button class="delete-product-btn" data-product-price-id="@product.prod_id">Delete Product</button>
                     </div>
                 }</p>
             }
@@ -113,9 +111,9 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <form id="updateProductDescriptionForm" method="post" asp-page-handler="UpdateProductDescription">
-                <input type="hidden" id="productDescriptionInput" name="productDescriptionId"/>
+                <input type="hidden" id="productDescriptionInput" name="productDescriptionInput"/>
                 <label for="updateProductName">Product Description:</label>
-                <input type="text" id="updateProductName" name="newProductName" placeholder="Ex: Wilson Indoor Basketball"/>
+                <input type="text" id="updateProductName" name="updateProductName" placeholder="Ex: Wilson Indoor Basketball"/>
                 <br>
                 <button type="submit">Update Product</button>
             </form>
@@ -133,15 +131,12 @@
             </form>
         </div>
     </div>
-    <div id="deleteProductModal" class="modal">
-        <div class="modal-content">
-        <span class="close">&times;</span>
-            <form id="deleteProductForm" method="post" asp-page-handler="DeleteProduct">
-                <input type="hidden" id="productIdToDelete" name="productIdToDelete"/>
-                <p>Are you sure you want to delete this product?</p>
-                <button type="submit">Delete Product</button>
-            </form>
-        </div>
+    <div id="deleteProductForm" style="display: none;">
+        <form method="post" asp-page-handler="DeleteProduct">
+            <input type="hidden" id="productIdToDelete" name="productIdToDelete"/>
+            <label for="productId">Are you sure you want to delete this product?</label>
+            <button type="submit" id="productId" name="productId">Delete Product</button>
+        </form>
     </div>
     <div id="addProductForm" style="display: none;">
     <form method="post" asp-page-handler="AddProduct">
@@ -173,7 +168,7 @@
     // Get the models, buttons, and a close button
     var updateProductDescriptionModal = document.getElementById("updateProductDescriptionModal");
     var updateProductPriceModal = document.getElementById("updateProductPriceModal");
-    var deleteProductModal = document.getElementById("deleteProductModal")
+    var deleteProductModal = document.getElementById("deleteProductForm")
 
     var modifyDescriptionButtons = document.getElementsByClassName("modify-description-btn");
     var modifyPriceButtons = document.getElementsByClassName("modify-price-btn");
@@ -193,7 +188,7 @@
 
     function deleteProduct(productId) {
         document.getElementById("productIdToDelete").value = productId;
-        document.getElementById("deleteProductForm").submit();
+        deleteProductModal.style.display = "block";
     }
     // Add click event listeners to the buttons
     for (var i = 0; i < modifyDescriptionButtons.length; i++) {
