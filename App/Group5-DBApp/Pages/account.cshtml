@@ -54,9 +54,7 @@
                 <button class="update-address-btn" data-user-id="@Model.Users.FirstOrDefault()?.user_id">Update Address(es)</button>
                 <br>
                 <br>
-                <form id="deleteAddressForm" method="post" asp-page-handler="/account/DeleteAddress">
-                <button class="update-address-btn" data-user-id="@Model.Users.FirstOrDefault()?.user_id">Delete Address(es)</button>
-                </form>
+                <button class="delete-address-btn" data-user-id="@Model.Users.FirstOrDefault()?.user_id">Delete Address(es)</button>
                 <br>
             </div>
         }
@@ -104,19 +102,33 @@
             </form>
         </div>
     </div>
+    <div id="deleteAddressModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form id="deleteAddressForm" method="post" asp-page-handler="updateAddress">
+                <input type="hidden" id="userId" name="userId" />
+                <input type="hidden" id="homeAddress" name="homeAddress" value="No Address"/>
+                <input type="hidden" id="deliveryAddress" name="deliveryAddress" value="No Address"/>
+                <input type="hidden" id="paymentAddress" name="paymentAddress" value="No Address"/>
+                <button type="submit">Delete Address(es)</button>
+            </form>
+        </div>
+    </div>
 </body>
 <script>
     // Get the modals
     var updateCreditCardModal = document.getElementById("updateCreditCardModal");
     var updateAddressModal = document.getElementById("updateAddressModal");
 
-    var deleteCreditCardModal = document.getElementById("deleteCreditCardModal")
+    var deleteCreditCardModal = document.getElementById("deleteCreditCardModal");
+    var deleteAddressModal = document.getElementById("deleteAddressModal");
     
     // Get the buttons
     var updateCreditCardButtons = document.getElementsByClassName("update-credit-card-btn");
     var updateAddressButtons = document.getElementsByClassName("update-address-btn");
 
     var deleteCreditCardButtons = document.getElementsByClassName("delete-credit-card-btn");
+    var deleteAddressButtons = document.getElementsByClassName("delete-address-btn");
 
     // Get the close buttons
     var closeButtons = document.getElementsByClassName("close");
@@ -139,12 +151,26 @@
         updateAddressModal.style.display = "block";
     }
 
+    // Function to open the update address modal
+    function openDeleteAddressModal(userId) {
+        document.getElementById("userId").value = userId;
+        deleteAddressModal.style.display = "block";
+    }
+
     // Add click event listener to each "Update Credit Card" button
     for (var i = 0; i < updateCreditCardButtons.length; i++) {
         updateCreditCardButtons[i].onclick = function() {
             var cardId = this.getAttribute("data-card-id");
             console.log(updateCreditCardButtons.length);
             openUpdateCreditCardModal(cardId);
+        };
+    }
+
+    for (var i = 0; i < deleteAddressButtons.length; i++) {
+        deleteAddressButtons[i].onclick = function() {
+            var cardId = this.getAttribute("data-user-id");
+            console.log( deleteAddressButtons.length);
+            openDeleteAddressModal(cardId);
         };
     }
 
