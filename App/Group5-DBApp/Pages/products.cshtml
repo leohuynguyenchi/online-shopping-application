@@ -1,0 +1,47 @@
+@page
+@using Group5_DBApp.Models
+@model Group5_DBApp.Pages.ProductsModel
+@{
+    ViewData["Title"] = "Products";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Shopping Application</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="~/wwwroot/js/site.js"></script>
+</head>
+<body>
+    <main>
+    <img src="~/images/Basketball.png" alt="Basketball Image">
+        <section class="search-products">
+            <!-- Search Bar -->
+            <form action="#" method="GET">
+                <input type="text" name="search" id="searchInput" placeholder="Search products...">
+            </form>
+        </section>
+        <section class="featured-products" id="featured-products">
+            <!-- Products -->
+            @if (Model.Products != null) {
+            @foreach (var product in Model.Products)
+            {
+                <div class="product-card">
+                    <form id="AddToCartForm" method="post" asp-page-handler="AddToCart">
+                        <h3>@product.prod_name</h3>
+                        <p>$@product.price</p>
+                        <!-- Add a hidden input field to store the product ID -->
+                        <input type="hidden" name="prod_id" value="@product.prod_id" />
+                        <!-- Change the button type to submit -->
+                        <button type="submit" id="AddToCart">Add to Cart</button>
+                    </form>
+                </div>
+
+            }
+            }
+        </section>
+    </main>
+</body>
+</html>

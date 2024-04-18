@@ -1,0 +1,246 @@
+@page
+@using Group5_DBApp.Models
+@using Group5_DBApp.Pages
+@model Group5_DBApp.Pages.StaffDashboardModel
+@{
+    ViewData["Title"] = "Staff Account Info";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Shopping Application</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="~/wwwroot/js/site.js"></script>
+</head>
+<h1>Welcome to the Staff Dashboard</h1>
+<style>
+    .container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .stocks {
+        width: 45%; /* Adjust the width as needed */
+    }
+
+    .warehouses {
+        width: 45%; /* Adjust the width as needed */
+    }
+</style>
+<body>
+    <main>
+        <main>
+        <section>
+            <div class="container">
+            <div class="stocks">
+                <!-- Display stocks -->
+                <h2>Stocks:</h2>
+                @if (Model != null && Model.Stock != null && Model.Stock.Any())
+                {
+                    <ul>
+                        @foreach (var stock in Model.Stock)
+                        {
+                            <li>
+                                Stock ID: @stock.stock_id <br>
+                                Product ID: @stock.prod_id <br>
+                                Warehouse ID: @stock.warehouse_id <br>
+                                Quantity: @stock.quantity
+                            </li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <p>No stocks found.</p>
+                }
+            </div>
+
+            <div class="warehouses">
+                <!-- Display warehouses -->
+                <h2>Warehouses:</h2>
+                @if (Model != null && Model.Warehouse != null && Model.Warehouse.Any())
+                {
+                    <ul>
+                        @foreach (var warehouse in Model.Warehouse)
+                        {
+                            <li>
+                                Warehouse ID: @warehouse.warehouse_id <br>
+                                Capacity: @warehouse.capacity <br>
+                                Address: @warehouse.address
+                            </li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <p>No warehouses found.</p>
+                }
+            </div>
+        </div>
+        </section>
+        <section class="search-products">
+            <!-- Search Bar -->
+            <form action="#" method="GET">
+                <input type="text" name="search" id="searchInput" placeholder="Search products...">
+            </form>
+        </section>
+        <section>
+            <!-- Products -->
+            @if (Model != null && Model.Products != null) {
+                <p>@foreach (var product in Model.Products) {
+                    <div class="product-card">
+                        <h3>@product.prod_id @product.prod_name</h3>
+                        <p>$@product.price</p>
+                        <button class="modify-description-btn" data-product-id="@product.prod_id">Modify Product Description</button>
+                        <button class="modify-price-btn" data-product-price-id="@product.prod_id">Modify Price</button>
+                        <button class="delete-product-btn" data-delete-product-id="@product.prod_id">Delete Product</button>
+                    </div>
+                }</p>
+            }
+        </section>
+        <br>
+        <br>
+        <button id="addProductBtn">Add Products to Store</button>
+        <button id="addStockBtn">Add Stock to Warehouse</button>
+        <br>
+        <br>
+    </main>
+    <div id="updateProductNameModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form method="post" asp-page-handler="UpdateProductName">
+                <input type="hidden" id="productIdToUpdate" name="productIdToUpdate"/>
+                <label for="newProductName">New Product Name:</label>
+                <input type="text" id="newProductName" name="newProductName" placeholder="Ex: New Product Name"/>
+                <br>
+                <button type="submit">Update Product Name</button>
+            </form>
+        </div> 
+    </div>
+    <div id="updateProductPriceModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form method="post" asp-page-handler="UpdateProductPrice">
+                <input type="hidden" id="productIdToUpdatePrice" name="productIdToUpdatePrice"/>
+                <label for="newPrice">New Price:</label>
+                <input type="number" id="newPrice" name="newPrice" placeholder="Ex: 30.00"/>
+                <br>
+                <button type="submit">Update Price</button>
+            </form>
+        </div>
+    </div>
+    <div id="deleteProductModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form method="post" asp-page-handler="DeleteProduct">
+                <input type="hidden" id="productIdToDelete" name="productIdToDelete"/>
+                <p>Are you sure to delete this product?</p>
+                <button type="submit">Delete Product</button>
+            </form>
+        </div>
+    </div>
+    <div id="addProductForm" style="display: none;">
+    <form method="post" asp-page-handler="AddProduct">
+        <label for="productName">Product Name:</label>
+        <input type="text" id="productName" name="productName" placeholder="Enter product name">
+        <br>
+        <label for="productPrice">Product Price:</label>
+        <input type="number" id="productPrice" name="productPrice" placeholder="Enter product price">
+        <br>
+        <button type="submit">Add Product</button>
+    </form>
+    </div>
+    <div id="addStockForm" style="display: none;">
+    <form method="post" asp-page-handler="AddStockToWarehouse">
+        <label for="prodId">Product ID:</label>
+        <input type="number" id="prodId" name="prodId" placeholder="Enter product ID">
+        <br>
+        <label for="warehouseId">Warehouse ID:</label>
+        <input type="number" id="warehouseId" name="warehouseId" placeholder="Enter warehouse ID">
+        <br>
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" placeholder="Enter quantity">
+        <br>
+        <button type="submit">Add Stock to Warehouse</button>
+    </form>
+    </div>
+</body>
+<script>
+    // Get the models, buttons, and a close button
+    var updateProductNameModal = document.getElementById("updateProductNameModal");
+    var updateProductPriceModal = document.getElementById("updateProductPriceModal");
+    var deleteProductModal = document.getElementById("deleteProductModal")
+
+    var modifyNameButtons = document.getElementsByClassName("modify-description-btn");
+    var modifyPriceButtons = document.getElementsByClassName("modify-price-btn");
+    var deleteProductButtons = document.getElementsByClassName("delete-product-btn");
+
+    var closeButtons = document.getElementsByClassName("close");
+
+    function modifyProductName(productId){
+        document.getElementById("productIdToUpdate").value = productId;
+        updateProductNameModal.style.display = "block";
+    }
+
+    function modifyProductPrice(productId) {
+        document.getElementById("productIdToUpdatePrice").value = productId;
+        updateProductPriceModal.style.display = "block";
+    }
+
+    function deleteProduct(productId) {
+        document.getElementById("productIdToDelete").value = productId;
+        deleteProductModal.style.display = "block";
+    }
+    // Add click event listeners to the buttons
+    for (var i = 0; i < modifyNameButtons.length; i++) {
+        modifyNameButtons[i].onclick = function() {
+            var productId = this.getAttribute("data-product-id");
+            modifyProductName(productId);
+        };
+    }
+
+    for (var i = 0; i < modifyPriceButtons.length; i++) {
+        modifyPriceButtons[i].onclick = function() {
+            var productId = this.getAttribute("data-product-price-id");
+            modifyProductPrice(productId);
+        };
+    }
+
+    for (var i = 0; i < deleteProductButtons.length; i++) {
+        deleteProductButtons[i].onclick = function() {
+            var productId = this.getAttribute("data-delete-product-id");
+            deleteProduct(productId);
+        };
+    }
+
+    for (var i = 0; i < closeButtons.length; i++) {
+        closeButtons[i].onclick = function() {
+            updateProductNameModal.style.display = "none";
+            updateProductPriceModal.style.display = "none";
+            deleteProductModal.style.display = "none";
+        };
+    }
+
+    window.onclick = function(event) {
+        if (event.target == updateProductNameModal) {
+            updateProductNameModal.style.display = "none";
+        }
+        else if (event.target == updateProductPriceModal) {
+            updateProductPriceModal.style.display = "none";
+        }
+        else if (event.target == deleteProductModal) {
+            deleteProductModal.style.display = "none";
+        }
+    }
+    document.getElementById('addProductBtn').addEventListener('click', function() {
+        // Show the add product form
+        document.getElementById('addProductForm').style.display = 'block';
+    });
+    document.getElementById('addStockBtn').addEventListener('click', function() {
+        // Show the add product form
+        document.getElementById('addStockForm').style.display = 'block';
+    });
+</script>
+</html>
