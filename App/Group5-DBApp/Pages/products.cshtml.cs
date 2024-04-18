@@ -24,6 +24,7 @@ public class ProductsModel(ILogger<ProductsModel> logger, DataContext context) :
         // Retrieve the product ID and quantity from the form data
         var prod_id = Request.Form["prod_id"];
         var quantity = Request.Form["quantity"];
+        var deliveryType = Request.Form["delivery"];
         var quantityValue = Convert.ToDecimal(Request.Form["quantity"].FirstOrDefault());
 
         // Parse the product ID to decimal
@@ -71,7 +72,7 @@ public class ProductsModel(ILogger<ProductsModel> logger, DataContext context) :
             prod_id = productId,
             quantity = Convert.ToInt64(quantity), // You may need to adjust this based on your application logic
             delivery_price = totalPrice,
-            delivery_type = "Standard",
+            delivery_type = deliveryType,
             // Set other required fields as needed
         };
 

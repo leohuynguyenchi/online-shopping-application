@@ -23,10 +23,10 @@ public class CartModel(ILogger<CartModel> logger, DataContext context) : PageMod
         CreditCards = await _context.CreditCards.ToArrayAsync();
     }
 
-    public async Task<IActionResult> OnPostDeleteOrder(int orderId)
+    public async Task<IActionResult> OnPostDeleteOrder(decimal orderId)
     {
         // Implement logic to delete the order with the given orderId from the cart
-        var orderToDelete = await _context.Orders.FirstOrDefaultAsync(order => order.order_id == orderId);
+        var orderToDelete = await _context.Orders.FindAsync(orderId);
         
         if (orderToDelete != null)
         {
@@ -40,7 +40,7 @@ public class CartModel(ILogger<CartModel> logger, DataContext context) : PageMod
         }
 
         // Optionally, you can redirect the user back to the cart page or perform any other desired action
-        return RedirectToPage("");
+        return RedirectToPage();
     }
 
 }
