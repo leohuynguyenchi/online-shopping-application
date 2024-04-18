@@ -80,10 +80,7 @@ public class AccountModel(ILogger<AccountModel> logger, DataContext context) : P
             return Page();
         }
 
-        creditCard.CardNumber = "";
-        creditCard.ExpireDate = "";
-
-        _context.CreditCards.Update(creditCard);
+        _context.CreditCards.Remove(creditCard);
         await _context.SaveChangesAsync();
 
         return RedirectToPage();
