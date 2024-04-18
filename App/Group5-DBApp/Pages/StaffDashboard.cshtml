@@ -97,7 +97,7 @@
                         <button class="modify-price-btn" data-product-price-id="@product.prod_id">Modify Price</button>
                         <form method="post" asp-page-handler="DeleteProduct">
                             <input type="hidden" id="productIdToDelete" name="productIdToDelete"/>
-                            <button type="submit" id="productId" name="productId" class="delete-product-btn" data-delete-product-id="@product.prod_id">Delete Product</button>
+                            <button type="submit" class="delete-product-btn" data-delete-product-id="@product.prod_id">Delete Product</button>
                         </form>
                     </div>
                 }</p>
@@ -110,25 +110,25 @@
         <br>
         <br>
     </main>
-    <div id="updateProductDescriptionModal" class="modal">
+    <div id="updateProductNameModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <form id="updateProductDescriptionForm" method="post" asp-page-handler="UpdateProductDescription">
-                <input type="hidden" id="productDescriptionInput" name="productDescriptionInput"/>
-                <label for="updateProductName">Product Description:</label>
-                <input type="text" id="updateProductName" name="updateProductName" placeholder="Ex: Wilson Indoor Basketball"/>
+            <form method="post" asp-page-handler="UpdateProductName">
+                <input type="hidden" id="productIdToUpdate" name="productIdToUpdate"/>
+                <label for="newProductName">New Product Name:</label>
+                <input type="text" id="newProductName" name="newProductName" placeholder="Ex: New Product Name"/>
                 <br>
-                <button type="submit">Update Product</button>
+                <button type="submit">Update Product Name</button>
             </form>
-        </div>
+        </div> 
     </div>
     <div id="updateProductPriceModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <form id="updateProductPriceForm" method="post" asp-page-handler="UpdateProductPrice">
-                <input type="hidden" id="productPriceInput" name="productPriceInput"/>
-                <label for="productPrice">New Price:</label>
-                <input type="number" id="productPrice" name="productPrice" placeholder="Ex: 30.00"/>
+            <form method="post" asp-page-handler="UpdateProductPrice">
+                <input type="hidden" id="productIdToUpdatePrice" name="productIdToUpdatePrice"/>
+                <label for="newPrice">New Price:</label>
+                <input type="number" id="newPrice" name="newPrice" placeholder="Ex: 30.00"/>
                 <br>
                 <button type="submit">Update Price</button>
             </form>
@@ -162,22 +162,22 @@
 </body>
 <script>
     // Get the models, buttons, and a close button
-    var updateProductDescriptionModal = document.getElementById("updateProductDescriptionModal");
+    var updateProductNameModal = document.getElementById("updateProductNameModal");
     var updateProductPriceModal = document.getElementById("updateProductPriceModal");
 
-    var modifyDescriptionButtons = document.getElementsByClassName("modify-description-btn");
+    var modifyNameButtons = document.getElementsByClassName("modify-description-btn");
     var modifyPriceButtons = document.getElementsByClassName("modify-price-btn");
     var deleteProductButtons = document.getElementsByClassName("delete-product-btn");
 
     var closeButtons = document.getElementsByClassName("close");
 
-    function modifyProductDescription(productId){
-        document.getElementById("productDescriptionInput").value = productId;
-        updateProductDescriptionModal.style.display = "block";
+    function modifyProductName(productId){
+        document.getElementById("productIdToUpdate").value = productId;
+        updateProductNameModal.style.display = "block";
     }
 
     function modifyProductPrice(productId) {
-        document.getElementById("productPriceInput").value = productId;
+        document.getElementById("productIdToUpdatePrice").value = productId;
         updateProductPriceModal.style.display = "block";
     }
 
@@ -185,10 +185,10 @@
         document.getElementById("productIdToDelete").value = productId;
     }
     // Add click event listeners to the buttons
-    for (var i = 0; i < modifyDescriptionButtons.length; i++) {
-        modifyDescriptionButtons[i].onclick = function() {
+    for (var i = 0; i < modifyNameButtons.length; i++) {
+        modifyNameButtons[i].onclick = function() {
             var productId = this.getAttribute("data-product-id");
-            modifyProductDescription(productId);
+            modifyProductName(productId);
         };
     }
 
@@ -208,15 +208,16 @@
 
     for (var i = 0; i < closeButtons.length; i++) {
         closeButtons[i].onclick = function() {
-            updateProductDescriptionModal.style.display = "none";
+            updateProductNameModal.style.display = "none";
             updateProductPriceModal.style.display = "none";
         };
     }
 
     window.onclick = function(event) {
         if (event.target == updateProductDescriptionModal) {
-            updateProductDescriptionModal.style.display = "none";
-        } else if (event.target == updateProductPriceModal) {
+            updateProductNameModal.style.display = "none";
+        }
+        else if (event.target == updateProductPriceModal) {
             updateProductPriceModal.style.display = "none";
         }
     }

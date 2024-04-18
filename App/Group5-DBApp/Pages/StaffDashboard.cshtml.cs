@@ -25,41 +25,12 @@ namespace Group5_DBApp.Pages
             Warehouse = await _context.Warehouse.ToListAsync();
         }
         
-        public async Task<IActionResult> OnPostModifyProductDescriptionAsync(string productName)
+        public async Task<IActionResult> OnPostUpdateProductNameAsync(decimal productIdToUpdate, string newProductName)
         {
-            // Find the product by its ID
-            var product = await _context.Products.FindAsync(productName);
-            _logger.LogInformation($"{product?.prod_name}");
-            if (product == null)
-            {
-                _logger.LogInformation($"{product?.prod_name}");
-                
-                return NotFound();
-            }
-
-            if (!ModelState.IsValid)
-            {
-                _logger.LogInformation($"{product.prod_name}");
-                return Page();
-            }
-
-            // Update the product's name with the new name
-            product.prod_name = Request.Form["updateProductName"];
-            _logger.LogInformation($"{product.prod_name}");
-            // Update the database
-            _context.Products.Update(product);
-            
-            await _context.SaveChangesAsync();
-
-            // Redirect to the same page or another page
-            return RedirectToPage();
-        }
-        public async Task<IActionResult> OnPostModifyProductPriceAsync(decimal productPrice)
-        {
-            var product = await _context.Products.FindAsync(productPrice);
+            var product = await _context.Products.FindAsync(productIdToUpdate);
 
             if (product == null)
-            {
+            {                
                 return NotFound();
             }
 
@@ -67,7 +38,28 @@ namespace Group5_DBApp.Pages
             {
                 return Page();
             }
-            product.price = productPrice;
+
+            product.prod_name = newProductName;
+
+            _context.Products.Update(product);
+            await _context.SaveChangesAsync();
+
+            return RedirectToPage();
+        }
+        public async Task<IActionResult> OnPostUpdateProductPriceAsync(decimal productIdToUpdatePrice, int newPrice)
+        {
+            var product = await _context.Products.FindAsync(productIdToUpdatePrice);
+
+            if (product == null)
+            {
+                return NotFound();
+            }
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            product.price = newPrice;
 
             _context.Products.Update(product);
             await _context.SaveChangesAsync();
@@ -75,12 +67,12 @@ namespace Group5_DBApp.Pages
             return RedirectToPage();
         }
 
-#pragma warning disable MVC1001 // Filters cannot be applied to page handler methods
-        [ValidateAntiForgeryToken]
-#pragma warning restore MVC1001 // Filters cannot be applied to page handler methods
+// #pragma warning disable MVC1001 // Filters cannot be applied to page handler methods
+//         [ValidateAntiForgeryToken]
+// #pragma warning restore MVC1001 // Filters cannot be applied to page handler methods
         public async Task<IActionResult> OnPostDeleteProductAsync(decimal productIdToDelete)
         {
-            var product = await _context.Products.FirstOrDefaultAsync(p => p.prod_id == productIdToDelete);
+            var product = await _context.Products.FindAsync(productIdToDelete);
 
             if (product == null)
             {
