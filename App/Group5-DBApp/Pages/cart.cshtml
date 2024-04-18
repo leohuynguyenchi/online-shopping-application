@@ -58,6 +58,10 @@
                 <br>
             }
         </section>
+        @foreach (var creditCard in Model.CreditCards.Where(c => c.UserId == Model.Users.FirstOrDefault()?.user_id))
+        {
+            <p>Payment Method: @creditCard.CardNumber</p>
+        }
     </main>
 
     @functions {
