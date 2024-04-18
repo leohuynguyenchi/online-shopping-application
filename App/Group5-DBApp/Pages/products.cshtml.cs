@@ -24,6 +24,7 @@ public class ProductsModel(ILogger<ProductsModel> logger, DataContext context) :
 {
     // Retrieve the product ID from the form data
     var prod_id = Request.Form["prod_id"];
+    var quantity = Request.Form["quantity"];
 
     // Assuming you have a way to get the current date/time, replace it with your actual implementation
     var orderDate = DateTime.Now; // Replace with your actual implementation
@@ -40,7 +41,7 @@ public class ProductsModel(ILogger<ProductsModel> logger, DataContext context) :
     {
         order_id = newOrderId,
         prod_id = Convert.ToDecimal(prod_id),
-        quantity = 1, // You may need to adjust this based on your application logic
+        quantity = Convert.ToInt64(quantity), // You may need to adjust this based on your application logic
         delivery_price = 0.00M,
         delivery_type = "Ground",
         // Set other required fields as needed
