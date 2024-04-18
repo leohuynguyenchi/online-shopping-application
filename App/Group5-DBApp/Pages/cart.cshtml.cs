@@ -22,4 +22,25 @@ public class CartModel(ILogger<CartModel> logger, DataContext context) : PageMod
         Users = await _context.Users.ToListAsync();
         CreditCards = await _context.CreditCards.ToArrayAsync();
     }
+
+    public async Task<IActionResult> OnPostDeleteOrder(int orderId)
+    {
+        // Implement logic to delete the order with the given orderId from the cart
+        var orderToDelete = await _context.Orders.FirstOrDefaultAsync(order => order.order_id == orderId);
+        
+        if (orderToDelete != null)
+        {
+            _context.Orders.Remove(orderToDelete);
+            await _context.SaveChangesAsync();
+        }
+        else
+        {
+            // Handle case where the order to delete was not found
+            return NotFound();
+        }
+
+        // Optionally, you can redirect the user back to the cart page or perform any other desired action
+        return RedirectToPage("");
+    }
+
 }

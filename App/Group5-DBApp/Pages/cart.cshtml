@@ -54,6 +54,9 @@
                     <p>Delivery Date: <span id="delivery_date_@order.order_id">@order.delivery_date</span></p>
                 </div>
                 <button onclick="placeOrder('@order.order_id')">Place Order</button>
+                <form method="post" asp-page-handler="Delete Order">
+                <button id="DeleteOrder" >Delete Order from Cart</button>
+                </form>
                 <br>
                 <br>
             }
@@ -62,6 +65,10 @@
         {
             <p>Payment Method: @creditCard.CardNumber</p>
         }
+        @{
+            decimal totalCost = Model.Orders.Sum(order => order.delivery_price);
+        }
+        <p>Total Cost of Cart: $@totalCost</p>
     </main>
 
     @functions {
