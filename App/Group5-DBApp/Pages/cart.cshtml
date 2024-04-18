@@ -62,6 +62,10 @@
         {
             <p>Payment Method: @creditCard.CardNumber</p>
         }
+        @{
+            decimal totalCost = Model.Orders.Sum(order => order.delivery_price);
+        }
+        <p>Total Cost of Cart: $@totalCost</p>
     </main>
 
     @functions {
