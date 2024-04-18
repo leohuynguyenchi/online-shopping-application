@@ -12,10 +12,12 @@ public class ProductsModel(ILogger<ProductsModel> logger, DataContext context) :
     private readonly DataContext _context = context;
 
     public IList<Product> Products { get; set; }
+    public IList<Stock> Stock { get; set; }
 
     public async Task OnGet()
     {
         Products = await _context.Products.ToListAsync();
+        Stock = await _context.Stock.ToListAsync();
     }
 
     public async Task<IActionResult> OnPostAddToCartAsync()

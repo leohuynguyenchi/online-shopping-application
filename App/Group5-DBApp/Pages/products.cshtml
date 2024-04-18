@@ -43,6 +43,30 @@
             }
             }
         </section>
+        <br>
+        <br>
+        <section class="stocks">
+            <h4><i><u>Stocks:</u></i></h4>
+            @if (Model != null && Model.Stock != null && Model.Stock.Any())
+            {
+                <ul>
+                    @foreach (var product in Model.Products)
+                    {
+                        <h4>Product Name: @product.prod_name</h4>
+                        @foreach (var stock in Model.Stock.Where(s => s.prod_id == product.prod_id))
+                        {
+                            <li>
+                                Quantity: @stock.quantity
+                            </li>
+                        }
+                    }
+                </ul>
+            }
+            else
+            {
+                <p>No stocks found.</p>
+            }
+        </section>
     </main>
 </body>
 </html>
