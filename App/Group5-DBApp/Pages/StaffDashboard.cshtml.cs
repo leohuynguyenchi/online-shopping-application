@@ -68,7 +68,7 @@ namespace Group5_DBApp.Pages
         }
 
 // #pragma warning disable MVC1001 // Filters cannot be applied to page handler methods
-//         [ValidateAntiForgeryToken]
+        // [ValidateAntiForgeryToken]
 // #pragma warning restore MVC1001 // Filters cannot be applied to page handler methods
         public async Task<IActionResult> OnPostDeleteProductAsync(decimal productIdToDelete)
         {

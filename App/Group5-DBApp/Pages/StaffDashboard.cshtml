@@ -95,10 +95,7 @@
                         <p>$@product.price</p>
                         <button class="modify-description-btn" data-product-id="@product.prod_id">Modify Product Description</button>
                         <button class="modify-price-btn" data-product-price-id="@product.prod_id">Modify Price</button>
-                        <form method="post" asp-page-handler="DeleteProduct">
-                            <input type="hidden" id="productIdToDelete" name="productIdToDelete"/>
-                            <button type="submit" class="delete-product-btn" data-delete-product-id="@product.prod_id">Delete Product</button>
-                        </form>
+                        <button class="delete-product-btn" data-delete-product-id="@product.prod_id">Delete Product</button>
                     </div>
                 }</p>
             }
@@ -134,6 +131,16 @@
             </form>
         </div>
     </div>
+    <div id="deleteProductModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form method="post" asp-page-handler="DeleteProduct">
+                <input type="hidden" id="productIdToDelete" name="productIdToDelete"/>
+                <p>Are you sure to delete this product?</p>
+                <button type="submit">Delete Product</button>
+            </form>
+        </div>
+    </div>
     <div id="addProductForm" style="display: none;">
     <form method="post" asp-page-handler="AddProduct">
         <label for="productName">Product Name:</label>
@@ -164,6 +171,7 @@
     // Get the models, buttons, and a close button
     var updateProductNameModal = document.getElementById("updateProductNameModal");
     var updateProductPriceModal = document.getElementById("updateProductPriceModal");
+    var deleteProductModal = document.getElementById("deleteProductModal")
 
     var modifyNameButtons = document.getElementsByClassName("modify-description-btn");
     var modifyPriceButtons = document.getElementsByClassName("modify-price-btn");
@@ -183,6 +191,7 @@
 
     function deleteProduct(productId) {
         document.getElementById("productIdToDelete").value = productId;
+        deleteProductModal.style.display = "block";
     }
     // Add click event listeners to the buttons
     for (var i = 0; i < modifyNameButtons.length; i++) {
@@ -210,6 +219,7 @@
         closeButtons[i].onclick = function() {
             updateProductNameModal.style.display = "none";
             updateProductPriceModal.style.display = "none";
+            deleteProductModal.style.display = "none";
         };
     }
 
@@ -219,6 +229,9 @@
         }
         else if (event.target == updateProductPriceModal) {
             updateProductPriceModal.style.display = "none";
+        }
+        else if (event.target == deleteProductModal) {
+            deleteProductModal.style.display = "none";
         }
     }
     document.getElementById('addProductBtn').addEventListener('click', function() {
