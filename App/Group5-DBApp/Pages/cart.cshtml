@@ -54,10 +54,7 @@
                     <p>Delivery Date: <span id="delivery_date_@order.order_id">@order.delivery_date</span></p>
                 </div>
                 <button onclick="placeOrder('@order.order_id')">Place Order</button>
-                <form id="DeleteOrderForm" method="post" asp-page-handler="DeleteOrder">
-                    <input type="hidden" id="orderId" name="orderId" value=@Model.Orders.FirstOrDefault()?.order_id/>
-                    <button type="submit">Delete Order From Cart</button>
-                </form>
+                <button class="delete-order-btn" data-delete-order-id="@order.order_id">Delete Order</button>
                 <br>
                 <br>
             }
@@ -71,6 +68,15 @@
         }
         <p>Total Cost of Cart: $@totalCost</p>
     </main>
+    <div id="deleteOrderModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form method="post" asp-page-handler="DeleteOrder">
+                <input type="hidden" id="orderId" name="orderId"/>
+                <button type="submit">Delete Order</button>
+            </form>
+        </div>
+    </div>
 
     @functions {
         string GetProductName(decimal productId)
@@ -81,4 +87,21 @@
         }
     }
 </body>
+<script>
+
+    var deleteOrderModal = document.getElementById("deleteOrderModal")
+    var deleteOrderButtons = document.getElementsByClassName("delete-order-btn");
+
+    function deleteOrder(orderId) {
+        document.getElementById("orderId").value = orderId;
+        deleteOrderModal.style.display = "block";
+    }
+
+    for (var i = 0; i < deleteOrderButtons.length; i++) {
+        deleteOrderButtons[i].onclick = function() {
+            var orderId = this.getAttribute("data-delete-order-id");
+            deleteOrder(orderId);
+        };
+    }
+</script>
 </html>
