@@ -1,5 +1,6 @@
 @page
 @model CartModel
+@using Microsoft.AspNetCore.Http
 @{
     ViewData["Title"] = "Cart";
 }
@@ -65,8 +66,10 @@
         }
         @{
             decimal totalCost = Model.Orders.Sum(order => order.delivery_price);
+            HttpContext.Session.SetString("TotalCost", totalCost.ToString());
         }
         <p>Total Cost of Cart: $@totalCost</p>
+
     </main>
     <div id="deleteOrderModal" class="modal">
         <div class="modal-content">

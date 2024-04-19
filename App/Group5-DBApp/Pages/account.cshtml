@@ -1,5 +1,6 @@
 @page
 @using Group5_DBApp.Models
+@using Microsoft.AspNetCore.Http
 @using Group5_DBApp.Pages
 @model Group5_DBApp.Pages.AccountModel
 @{
@@ -61,7 +62,12 @@
         <br>
         <br>
         <h3>Current Balance:</h3>
-        <p>BALANCE INFO GO HERE</p>
+        @{
+            string totalCostStr = HttpContext.Session.GetString("TotalCost");
+            decimal totalCost = decimal.Parse(totalCostStr);
+        }
+        <p>Total Cost of Cart: $@totalCost</p>
+
     </main>
     <div id="deleteCreditCardModal" class="modal">
         <div class="modal-content">
