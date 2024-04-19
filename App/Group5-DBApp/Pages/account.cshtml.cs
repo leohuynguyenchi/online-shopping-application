@@ -66,6 +66,53 @@ public class AccountModel(ILogger<AccountModel> logger, DataContext context) : P
         return RedirectToPage();
     }
 
+    public async Task<IActionResult> OnPostAddAddressAsync(decimal AddAddressId, string homeAddress, string deliveryAddress, string paymentAddress)
+    {
+        // Retrieve the user by ID
+        var user = await _context.Users.FindAsync(AddAddressId);
+
+        if (user == null)
+        {
+            // Handle the situation where the specified user ID doesn't exist
+            // For example, return a message indicating that the user doesn't exist
+            return RedirectToPage(); // Redirect to some page indicating the failure
+        }
+
+        // Update the user's addresses
+        user.home_address = homeAddress;
+        user.delivery_address = deliveryAddress;
+        user.payment_address = paymentAddress;
+
+        _context.Users.Update(user);
+        await _context.SaveChangesAsync();
+
+        return RedirectToPage();
+    }
+
+    public async Task<IActionResult> OnPostDeleteAddressAsync(decimal userId)
+    {
+        var user = await _context.Users.FindAsync(userId);
+
+        if (user == null)
+        {
+            return NotFound();
+        }
+
+        if (!ModelState.IsValid)
+        {
+            return Page();
+        }
+
+        user.home_address = Request.Form["homeAddress"];
+        user.delivery_address = Request.Form["deliveryAddress"];
+        user.payment_address = Request.Form["paymentAddress"];
+
+        _context.Users.Update(user);
+        await _context.SaveChangesAsync();
+
+        return RedirectToPage();
+    }
+
     public async Task<IActionResult> OnPostDeleteCreditCardAsync(int creditCardId)
     {
         var creditCard = await _context.CreditCards.FindAsync(creditCardId);
@@ -75,39 +122,25 @@ public class AccountModel(ILogger<AccountModel> logger, DataContext context) : P
             return NotFound();
         }
 
-        if (!ModelState.IsValid)
-        {
-            return Page();
-        }
-
-        creditCard.CardNumber = "";
-        creditCard.ExpireDate = "";
-
-        _context.CreditCards.Update(creditCard);
+        _context.CreditCards.Remove(creditCard);
         await _context.SaveChangesAsync();
 
         return RedirectToPage();
     }
 
-    public async Task<IActionResult> OnPostDeleteAddressAsync(decimal userId)
+    public async Task<IActionResult> OnPostAddCreditCardAsync(string newCardNumber, string newExpireDate)
     {
-        var addresses = await _context.Users.FindAsync(userId);
+        var maxCardId = await _context.CreditCards.MaxAsync(c => (int?)c.CardId);
+            // Create a new Card object
+            var newCardId = maxCardId.GetValueOrDefault() + 1;
+            var newCard = new CreditCard
+            {
+                CardId = newCardId,
+                CardNumber = newCardNumber,
+                ExpireDate = newExpireDate
+            };
 
-        if (addresses == null)
-        {
-            return NotFound();
-        }
-
-        if (!ModelState.IsValid)
-        {
-            return Page();
-        }
-
-        addresses.home_address = "";
-        addresses.delivery_address = "";
-        addresses.payment_address = "";
-
-        _context.Users.Update(addresses);
+        _context.CreditCards.Add(newCard);
         await _context.SaveChangesAsync();
 
         return RedirectToPage();

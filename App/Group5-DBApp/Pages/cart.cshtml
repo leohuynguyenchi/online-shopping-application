@@ -1,5 +1,6 @@
 @page
 @model CartModel
+@using Microsoft.AspNetCore.Http
 @{
     ViewData["Title"] = "Cart";
 }
@@ -28,6 +29,21 @@
             // Display order placed message
             alert("Order No: " + orderNo + " has been placed.");
         }
+
+        function placeOrders(orderIds) {
+            for (var i = 0; i < orderIds.length; i++) {
+                placeOrder(orderIds[i]);
+            }
+        }
+        
+        function placeAllOrders() {
+            var orderIds = [];
+            @foreach (var order in Model.Orders)
+            {
+                @: orderIds.push('@order.order_id');
+            }
+            placeOrders(orderIds);
+        }
     </script>
 </head>
 <body>
@@ -53,12 +69,37 @@
                     <p>Ship Date: <span id="ship_date_@order.order_id">@order.ship_date</span></p>
                     <p>Delivery Date: <span id="delivery_date_@order.order_id">@order.delivery_date</span></p>
                 </div>
-                <button onclick="placeOrder('@order.order_id')">Place Order</button>
+                <button class="delete-order-btn" data-delete-order-id="@order.order_id">Delete Order</button>
                 <br>
                 <br>
             }
+            <button onclick="placeAllOrders()">Place Orders</button>
         </section>
+        <label for="paymentMethod"><b><u>Choose Payment Method:</u></b></label>
+        <select name="paymentMethod" id="paymentMethod">
+            @foreach (var creditCard in Model.CreditCards)
+            {
+                <option>@creditCard.CardNumber</option>
+            }
+            
+        </select>
+        <br>
+        @{
+            decimal totalCost = Model.Orders.Sum(order => order.delivery_price);
+            HttpContext.Session.SetString("TotalCost", totalCost.ToString());
+        }
+        <h3><b>Total Cost of Cart: $@totalCost</b></h3>
+
     </main>
+    <div id="deleteOrderModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form method="post" asp-page-handler="DeleteOrder">
+                <input type="hidden" id="orderId" name="orderId"/>
+                <button type="submit">Delete Order</button>
+            </form>
+        </div>
+    </div>
 
     @functions {
         string GetProductName(decimal productId)
@@ -69,4 +110,21 @@
         }
     }
 </body>
+<script>
+
+    var deleteOrderModal = document.getElementById("deleteOrderModal")
+    var deleteOrderButtons = document.getElementsByClassName("delete-order-btn");
+
+    function deleteOrder(orderId) {
+        document.getElementById("orderId").value = orderId;
+        deleteOrderModal.style.display = "block";
+    }
+
+    for (var i = 0; i < deleteOrderButtons.length; i++) {
+        deleteOrderButtons[i].onclick = function() {
+            var orderId = this.getAttribute("data-delete-order-id");
+            deleteOrder(orderId);
+        };
+    }
+</script>
 </html>
