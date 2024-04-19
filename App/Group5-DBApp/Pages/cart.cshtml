@@ -29,6 +29,21 @@
             // Display order placed message
             alert("Order No: " + orderNo + " has been placed.");
         }
+
+        function placeOrders(orderIds) {
+            for (var i = 0; i < orderIds.length; i++) {
+                placeOrder(orderIds[i]);
+            }
+        }
+        
+        function placeAllOrders() {
+            var orderIds = [];
+            @foreach (var order in Model.Orders)
+            {
+                @: orderIds.push('@order.order_id');
+            }
+            placeOrders(orderIds);
+        }
     </script>
 </head>
 <body>
@@ -54,11 +69,11 @@
                     <p>Ship Date: <span id="ship_date_@order.order_id">@order.ship_date</span></p>
                     <p>Delivery Date: <span id="delivery_date_@order.order_id">@order.delivery_date</span></p>
                 </div>
-                <button onclick="placeOrder('@order.order_id')">Place Order</button>
                 <button class="delete-order-btn" data-delete-order-id="@order.order_id">Delete Order</button>
                 <br>
                 <br>
             }
+            <button onclick="placeAllOrders()">Place Orders</button>
         </section>
         <label for="paymentMethod"><b><u>Choose Payment Method:</u></b></label>
         <select name="paymentMethod" id="paymentMethod">
