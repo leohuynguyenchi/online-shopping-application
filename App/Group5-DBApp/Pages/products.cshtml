@@ -38,6 +38,11 @@
                         <!-- Add a hidden input field to store the product ID -->
                         <input type="hidden" name="prod_id" value="@product.prod_id" />
                         @* <input type="hidden" name="stockId" value="@stock.prod_id" /> *@
+                            <label for="delivery">Choose Delivery Plan:</label>
+                            <select name="delivery" id="delivery">
+                            <option value="Standard">Standard</option>
+                            <option value="Express">Express</option>
+                            </select>
                         <!-- Change the button type to submit -->
                         <input type="input" id="quantity" name="quantity" placeholder="Enter Amount To Order" min="1">
                         <button type="submit" id="AddToCart">Add to Cart</button>
