@@ -33,7 +33,6 @@
 </style>
 <body>
     <main>
-        <main>
         <section>
             <div class="container">
             <div class="stocks">
@@ -92,7 +91,7 @@
                 <input type="text" name="search" id="searchInput" placeholder="Search products...">
             </form>
         </section>
-        <section>
+        <section id="featured-products">
             <!-- Products -->
             @if (Model != null && Model.Products != null) {
                 <p>@foreach (var product in Model.Products) {

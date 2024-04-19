@@ -23,32 +23,32 @@
                 <input type="text" name="search" id="searchInput" placeholder="Search products...">
             </form>
         </section>
-        <section class="featured-products" id="featured-products">
+        <section id="featured-products">
             <!-- Products -->
-            @if (Model.Products != null) {
-            @foreach (var product in Model.Products)
-            {
-                <h3>@product.prod_name</h3>
-                <p>$@product.price</p>
-                // Take the first stock associated with the product
-                var stock = Model.Stock.Where(s => s.prod_id == product.prod_id);
-                <div class="product-card">
-                    <form id="AddToCartForm" method="post" asp-page-handler="AddToCart">
-                        
-                        <!-- Add a hidden input field to store the product ID -->
-                        <input type="hidden" name="prod_id" value="@product.prod_id" />
-                            <label for="delivery">Choose Delivery Plan:</label>
-                            <select name="delivery" id="delivery">
-                            <option value="Standard">Standard</option>
-                            <option value="Express">Express</option>
-                            </select>
-                        <!-- Change the button type to submit -->
-                        <input type="input" id="quantity" name="quantity" placeholder="Enter Amount To Order" min="1">
-                        <button type="submit" id="AddToCart">Add to Cart</button>
-                    </form>
-                </div>
+            @if (Model != null && Model.Products != null) {
+                @foreach (var product in Model.Products)
+                {
+                    
+                    // Take the first stock associated with the product
+                    var stock = Model.Stock.Where(s => s.prod_id == product.prod_id);
+                    <div class="product-card">
+                        <h3>@product.prod_name</h3>
+                        <p>$@product.price</p>
+                        <form id="AddToCartForm" method="post" asp-page-handler="AddToCart">
+                            <!-- Add a hidden input field to store the product ID -->
+                            <input type="hidden" name="prod_id" value="@product.prod_id" />
+                                <label for="delivery">Choose Delivery Plan:</label>
+                                <select name="delivery" id="delivery">
+                                <option value="Standard">Standard</option>
+                                <option value="Express">Express</option>
+                                </select>
+                            <!-- Change the button type to submit -->
+                            <input type="input" id="quantity" name="quantity" placeholder="Enter Amount To Order" min="1">
+                            <button type="submit" id="AddToCart">Add to Cart</button>
+                        </form>
+                    </div>
+                }
             }
-        }
         </section>
         <br>
         <br>
