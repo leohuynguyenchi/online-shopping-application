@@ -54,8 +54,9 @@
                     <p>Delivery Date: <span id="delivery_date_@order.order_id">@order.delivery_date</span></p>
                 </div>
                 <button onclick="placeOrder('@order.order_id')">Place Order</button>
-                <form method="post" asp-page-handler="/cart/DeleteOrder">
-                <button type="submit" data-order_id="@order.order_id">Delete Order From Cart</button>
+                <form id="DeleteOrderForm" method="post" asp-page-handler="DeleteOrder">
+                    <input type="hidden" id="orderId" name="orderId" value=@Model.Orders.FirstOrDefault()?.order_id/>
+                    <button type="submit">Delete Order From Cart</button>
                 </form>
                 <br>
                 <br>

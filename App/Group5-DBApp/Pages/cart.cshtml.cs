@@ -23,7 +23,7 @@ public class CartModel(ILogger<CartModel> logger, DataContext context) : PageMod
         CreditCards = await _context.CreditCards.ToArrayAsync();
     }
 
-    public async Task<IActionResult> OnPostDeleteOrder(decimal orderId)
+    public async Task<IActionResult> OnPostDeleteOrderAsync(decimal orderId)
     {
         // Implement logic to delete the order with the given orderId from the cart
         var orderToDelete = await _context.Orders.FindAsync(orderId);
