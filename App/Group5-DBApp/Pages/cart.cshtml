@@ -60,15 +60,20 @@
                 <br>
             }
         </section>
-        @foreach (var creditCard in Model.CreditCards.Where(c => c.UserId == Model.Users.FirstOrDefault()?.user_id))
-        {
-            <p>Payment Method: @creditCard.CardNumber</p>
-        }
+        <label for="paymentMethod"><b><u>Choose Payment Method:</u></b></label>
+        <select name="paymentMethod" id="paymentMethod">
+            @foreach (var creditCard in Model.CreditCards)
+            {
+                <option>@creditCard.CardNumber</option>
+            }
+            
+        </select>
+        <br>
         @{
             decimal totalCost = Model.Orders.Sum(order => order.delivery_price);
             HttpContext.Session.SetString("TotalCost", totalCost.ToString());
         }
-        <p>Total Cost of Cart: $@totalCost</p>
+        <h3><b>Total Cost of Cart: $@totalCost</b></h3>
 
     </main>
     <div id="deleteOrderModal" class="modal">
