@@ -66,23 +66,22 @@ public class AccountModel(ILogger<AccountModel> logger, DataContext context) : P
         return RedirectToPage();
     }
 
-    public async Task<IActionResult> OnPostAddAddressAsync(decimal userId)
+    public async Task<IActionResult> OnPostAddAddressAsync(decimal AddAddressId, string homeAddress, string deliveryAddress, string paymentAddress)
     {
-        var user = await _context.Users.FindAsync(userId);
+        // Retrieve the user by ID
+        var user = await _context.Users.FindAsync(AddAddressId);
 
         if (user == null)
         {
-            return NotFound();
+            // Handle the situation where the specified user ID doesn't exist
+            // For example, return a message indicating that the user doesn't exist
+            return RedirectToPage(); // Redirect to some page indicating the failure
         }
 
-        if (!ModelState.IsValid)
-        {
-            return Page();
-        }
-
-        user.home_address = Request.Form["homeAddress"];
-        user.delivery_address = Request.Form["deliveryAddress"];
-        user.payment_address = Request.Form["paymentAddress"];
+        // Update the user's addresses
+        user.home_address = homeAddress;
+        user.delivery_address = deliveryAddress;
+        user.payment_address = paymentAddress;
 
         _context.Users.Update(user);
         await _context.SaveChangesAsync();
@@ -123,12 +122,25 @@ public class AccountModel(ILogger<AccountModel> logger, DataContext context) : P
             return NotFound();
         }
 
-        if (!ModelState.IsValid)
-        {
-            return Page();
-        }
-
         _context.CreditCards.Remove(creditCard);
+        await _context.SaveChangesAsync();
+
+        return RedirectToPage();
+    }
+
+    public async Task<IActionResult> OnPostAddCreditCardAsync(string newCardNumber, string newExpireDate)
+    {
+        var maxCardId = await _context.CreditCards.MaxAsync(c => (int?)c.CardId);
+            // Create a new Card object
+            var newCardId = maxCardId.GetValueOrDefault() + 1;
+            var newCard = new CreditCard
+            {
+                CardId = newCardId,
+                CardNumber = newCardNumber,
+                ExpireDate = newExpireDate
+            };
+
+        _context.CreditCards.Add(newCard);
         await _context.SaveChangesAsync();
 
         return RedirectToPage();

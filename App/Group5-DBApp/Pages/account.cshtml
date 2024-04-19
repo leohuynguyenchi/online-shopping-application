@@ -24,27 +24,50 @@
         <br>
         <h2>Hello, @Model.Users.FirstOrDefault()?.username</h2>
         <br>
-        <button id="addNewCreditCard" name="addNewCreditCard">Add New Credit Card</button>
-        <button id="addNewAddress" name="addNewAddress">Add New Address(es)</button>
+        <button id="addNewCreditCard">Add New Credit Card</button>
+        <button id="addNewAddress">Add New Address</button>
         <br>
+        <div id="addCreditCardForm" style="display: none;">
+            <form method="post" asp-page-handler="AddCreditCard">
+                <label for="newCardNumber">Credit Card Number:</label>
+                <input type="text" id="newCardNumber" name="newCardNumber" placeholder="1234567891234567"/>
+                <br>
+                <label for="newExpireDate">Expiration Date:</label>
+                <input type="text" id="newExpireDate" name="newExpireDate" placeholder="1-1-1900"/>
+                <br>
+                <button type="submit">Add Credit Card</button>
+            </form>
+        </div>
+        <div id="addAddressForm" class="modal">
+            <form method="post" asp-page-handler="AddAddress">
+                <input type="hidden" id="AddAddressId" name="AddAddressId" value="1"/>
+                <label for="homeAddress">Home Address:</label>
+                <input type="text" id="homeAddress" name="homeAddress" placeholder="Ex: 123 street, city, country"/>
+                <br>
+                <label for="deliveryAddress">Delivery Address:</label>
+                <input type="text" id="deliveryAddress" name="deliveryAddress" placeholder="Ex: 123 street, city, country"/>
+                <br>
+                <label for="paymentAddress">Payment Address:</label>
+                <input type="text" id="paymentAddress" name="paymentAddress" placeholder="Ex: 123 street, city, country"/>
+                <br>
+                <button type="submit">Add Address(es)</button>
+            </form>
+        </div>
         <br>
         <br>
         <h3>Credit Card Information:</h3>
-        <p>@foreach (var creditCards in Model.CreditCards.Where(c => c.UserId == Model.Users.FirstOrDefault()?.user_id))
+        <p>@foreach (var creditCards in Model.CreditCards)
             {
                 <div class="credit-card">
                 <p>Card Number: @creditCards.CardNumber</p>
                 <p>Expiration Date: @creditCards.ExpireDate</p>
                 <button class="update-credit-card-btn" data-card-id="@creditCards.CardId">Update Credit Card</button>
-                <br>
-                <br>
                 <button class="delete-credit-card-btn" data-card-id="@Model.CreditCards.FirstOrDefault()?.CardId">Delete Credit Card</button>
+                <br>
                 <br>
                 </div>
             }
         </p>
-        <br>
-        <br>
         <h3>Address Information:</h3>
         @if (Model.Users != null && Model.Users.Any())
         {
@@ -123,40 +146,6 @@
             </form>
         </div>
     </div>
-    <div id="addAddressModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <form id="addAddressForm" method="post" asp-page-handler="AddAddress">
-                <input type="hidden" id="userId" name="userId" />
-                <label for="homeAddress">Home Address:</label>
-                <input type="text" id="homeAddress" name="homeAddress" placeholder="Ex: 123 street, city, country"/>
-                <br>
-                <label for="deliveryAddress">Delivery Address:</label>
-                <input type="text" id="deliveryAddress" name="deliveryAddress" placeholder="Ex: 123 street, city, country"/>
-                <br>
-                <label for="paymentAddress">Payment Address:</label>
-                <input type="text" id="paymentAddress" name="paymentAddress" placeholder="Ex: 123 street, city, country"/>
-                <br>
-                <button type="submit">Add Address(es)</button>
-            </form>
-        </div>
-        </div>
-    <div id="addCreditModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <form id="addCreditCardForm" method="post" asp-page-handler="AddCreditCard">
-                <input type="hidden" id="userId" name="userId" />
-                <label for="homeAddress">Credit Card Number:</label>
-                <input type="text" id="CardNumber" name="CardNumber" placeholder="1234567891234567"/>
-                <br>
-                <label for="deliveryAddress">Expiration Date:</label>
-                <input type="text" id="ExpireDate" name="ExpireDate" placeholder="1-1-1900"/>
-                <br>
-                <button type="submit">Add Credit Card</button>
-            </form>
-        </div>
-        </div>
-
 </body>
 <script>
     // Get the modals
@@ -251,48 +240,14 @@
         }
     }
 
+    document.getElementById('addNewAddress').addEventListener('click', function() {
+        // Show the add product form
+        document.getElementById('addAddressForm').style.display = 'block';
+    });
 
-
-
-    var addNewAddressBtn = document.getElementById('addNewAddress');
-    var modal = document.getElementById('addAddressModal');
-    var span = document.getElementsByClassName('close')[0];
-
-    addNewAddressBtn.onclick = function() {
-    modal.style.display = 'block';
-    }
-
-    span.onclick = function() {
-    modal.style.display = 'none';
-    }
-
-    window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = 'none';
-    }
-    }
-
-
-    var addNewCreditBtn = document.getElementById('addNewCreditCard');
-    var modalCC = document.getElementById('addCreditModal');
-    var spanCC = document.getElementsByClassName('close')[0];
-
-    addNewCreditBtn.onclick = function() {
-    modalCC.style.display = 'block';
-    }
-
-    spanCC.onclick = function() {
-    modalCC.style.display = 'none';
-    }
-
-    window.onclick = function(event) {
-    if (event.target == modalCC) {
-        modalCC.style.display = 'none';
-    }
-    }
-
-
-
-
+    document.getElementById('addNewCreditCard').addEventListener('click', function() {
+        // Show the add product form
+        document.getElementById('addCreditCardForm').style.display = 'block';
+    });
 </script>
 </html>
