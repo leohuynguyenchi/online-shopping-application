@@ -42,12 +42,17 @@
                 @if (Model != null && Model.Stock != null && Model.Stock.Any())
                 {
                     <ul>
-                        @foreach (var stock in Model.Stock)
+                        @foreach (var group in Model.Stock.GroupBy(s => s.prod_id))
                         {
+                            // Take the first stock item in the group
+                            var firstStock = group.First();
+                            // Calculate the total quantity for the group
+                            var totalQuantity = group.Sum(s => s.quantity);
+
                             <li>
-                                Product ID: @stock.prod_id <br>
-                                Warehouse ID: @stock.warehouse_id <br>
-                                Quantity: @stock.quantity
+                                Product ID: @firstStock.prod_id <br>
+                                Warehouse ID: @firstStock.warehouse_id <br>
+                                Quantity: @totalQuantity
                             </li>
                         }
                     </ul>
