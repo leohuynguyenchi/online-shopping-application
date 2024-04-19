@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Group5-DBApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d1750fe575d1e95afd38805a93dcc5ceb660a991")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5f163f48394d20a5701f53cc72e449feead01d7d")]
 [assembly: System.Reflection.AssemblyProductAttribute("Group5-DBApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Group5-DBApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
