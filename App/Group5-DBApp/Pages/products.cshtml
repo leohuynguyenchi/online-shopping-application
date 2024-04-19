@@ -26,25 +26,25 @@
         <section class="featured-products" id="featured-products">
             <!-- Products -->
             @if (Model.Products != null) {
-                @foreach (var product in Model.Products)
-                {
-                    @foreach (var stock in Model.Stock.Where(s => s.prod_id == product.prod_id))
-                    {
-                    <div class="product-card">
-                        <form id="AddToCartForm" method="post" asp-page-handler="AddToCart">
-                            <h3>@product.prod_name</h3>
-                            <p>$@product.price</p>
-                            <!-- Add a hidden input field to store the product ID -->
-                            <input type="hidden" name="prod_id" value="@product.prod_id" />
-                            <input type="hidden" name="stockId" value="@stock.stock_id" />
-                            <!-- Change the button type to submit -->
-                            <input type="input" name="quantity" placeholder="Enter Amount To Order" min = "1">
-                            <button type="submit" id="AddToCart">Add to Cart</button>
-                        </form>
-                    </div>
-                    }
-                }
+            @foreach (var product in Model.Products)
+            {
+                <h3>@product.prod_name</h3>
+                <p>$@product.price</p>
+                // Take the first stock associated with the product
+                var stock = Model.Stock.Where(s => s.prod_id == product.prod_id);
+                <div class="product-card">
+                    <form id="AddToCartForm" method="post" asp-page-handler="AddToCart">
+                        
+                        <!-- Add a hidden input field to store the product ID -->
+                        <input type="hidden" name="prod_id" value="@product.prod_id" />
+                        @* <input type="hidden" name="stockId" value="@stock.prod_id" /> *@
+                        <!-- Change the button type to submit -->
+                        <input type="input" id="quantity" name="quantity" placeholder="Enter Amount To Order" min="1">
+                        <button type="submit" id="AddToCart">Add to Cart</button>
+                    </form>
+                </div>
             }
+        }
         </section>
         <br>
         <br>
@@ -52,14 +52,32 @@
             <h4><i><u>Stocks:</u></i></h4>
             @if (Model != null && Model.Stock != null && Model.Stock.Any())
             {
+                // Dictionary to keep track of total quantity for each product ID
+                var totalQuantityByProductId = new Dictionary<decimal, decimal>(); // Change value type to decimal
+
+                foreach (var stock in Model.Stock)
+                {
+                    // Check if the product ID already exists in the dictionary
+                    if (totalQuantityByProductId.ContainsKey(stock.prod_id))
+                    {
+                        // If the product ID exists, add the new stock quantity to the existing total
+                        totalQuantityByProductId[stock.prod_id] += stock.quantity;
+                    }
+                    else
+                    {
+                        // If the product ID does not exist, add it to the dictionary with the new stock quantity
+                        totalQuantityByProductId[stock.prod_id] = stock.quantity;
+                    }
+                }
                 <ul>
                     @foreach (var product in Model.Products)
                     {
-                        <h4>Product Name: @product.prod_name</h4>
-                        @foreach (var stock in Model.Stock.Where(s => s.prod_id == product.prod_id))
+                        <h4>@product.prod_name</h4>
+                        // Check if the product ID exists in the dictionary
+                        if (totalQuantityByProductId.ContainsKey(product.prod_id))
                         {
                             <li>
-                                Quantity: @stock.quantity
+                                Quantity: @totalQuantityByProductId[product.prod_id]
                             </li>
                         }
                     }

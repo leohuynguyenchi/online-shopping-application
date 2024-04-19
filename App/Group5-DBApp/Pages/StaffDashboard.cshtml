@@ -23,6 +23,8 @@
 
     .stocks {
         width: 45%; /* Adjust the width as needed */
+        max-height: 200px;
+        overflow-y: auto;
     }
 
     .warehouses {
@@ -43,7 +45,6 @@
                         @foreach (var stock in Model.Stock)
                         {
                             <li>
-                                Stock ID: @stock.stock_id <br>
                                 Product ID: @stock.prod_id <br>
                                 Warehouse ID: @stock.warehouse_id <br>
                                 Quantity: @stock.quantity

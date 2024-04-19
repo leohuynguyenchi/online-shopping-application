@@ -80,7 +80,7 @@ public class ProductsModel(ILogger<ProductsModel> logger, DataContext context) :
         if (stock.quantity < quantityValue)
         {
             // Handle the case where there is not enough stock available
-            return BadRequest("Not enough stock available");
+            return BadRequest("Not enough stock available. Available quantity: " + stock.quantity);
         }
 
         // Add the new order to the Orders table
@@ -96,4 +96,3 @@ public class ProductsModel(ILogger<ProductsModel> logger, DataContext context) :
     }
 
 }
-
