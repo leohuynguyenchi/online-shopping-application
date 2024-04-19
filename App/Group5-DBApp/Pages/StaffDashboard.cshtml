@@ -23,6 +23,8 @@
 
     .stocks {
         width: 45%; /* Adjust the width as needed */
+        max-height: 200px;
+        overflow-y: auto;
     }
 
     .warehouses {
@@ -31,7 +33,6 @@
 </style>
 <body>
     <main>
-        <main>
         <section>
             <div class="container">
             <div class="stocks">
@@ -40,13 +41,17 @@
                 @if (Model != null && Model.Stock != null && Model.Stock.Any())
                 {
                     <ul>
-                        @foreach (var stock in Model.Stock)
+                        @foreach (var group in Model.Stock.GroupBy(s => s.prod_id))
                         {
+                            // Take the first stock item in the group
+                            var firstStock = group.First();
+                            // Calculate the total quantity for the group
+                            var totalQuantity = group.Sum(s => s.quantity);
+
                             <li>
-                                Stock ID: @stock.stock_id <br>
-                                Product ID: @stock.prod_id <br>
-                                Warehouse ID: @stock.warehouse_id <br>
-                                Quantity: @stock.quantity
+                                Product ID: @firstStock.prod_id <br>
+                                Warehouse ID: @firstStock.warehouse_id <br>
+                                Quantity: @totalQuantity
                             </li>
                         }
                     </ul>
@@ -86,7 +91,7 @@
                 <input type="text" name="search" id="searchInput" placeholder="Search products...">
             </form>
         </section>
-        <section>
+        <section id="featured-products">
             <!-- Products -->
             @if (Model != null && Model.Products != null) {
                 <p>@foreach (var product in Model.Products) {
@@ -163,7 +168,7 @@
         <label for="quantity">Quantity:</label>
         <input type="number" id="quantity" name="quantity" placeholder="Enter quantity">
         <br>
-        <button type="submit">Add Stock to Warehouse</button>
+        <button type="submit">Add Stock</button>
     </form>
     </div>
 </body>

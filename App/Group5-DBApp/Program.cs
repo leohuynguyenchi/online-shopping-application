@@ -1,5 +1,6 @@
 using Group5_DBApp.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,15 @@ builder.Services.AddDbContext<DataContext>(options =>
 // Register ProductService
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddRazorPages();
+
+// Add session services
+builder.Services.AddDistributedMemoryCache(); // Required to use session
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30); // You can set the session timeout here
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
 
 var app = builder.Build();
 
@@ -24,6 +34,9 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+// Use session
+app.UseSession();
 
 app.UseAuthorization();
 
