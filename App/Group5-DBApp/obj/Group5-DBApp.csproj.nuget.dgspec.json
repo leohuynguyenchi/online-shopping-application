@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Huy\\group5\\App\\Group5-DBApp\\Group5-DBApp.csproj": {}
+    "C:\\Users\\Huy\\basketball-shopping-app\\App\\Group5-DBApp\\Group5-DBApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Huy\\group5\\App\\Group5-DBApp\\Group5-DBApp.csproj": {
+    "C:\\Users\\Huy\\basketball-shopping-app\\App\\Group5-DBApp\\Group5-DBApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Huy\\group5\\App\\Group5-DBApp\\Group5-DBApp.csproj",
+        "projectUniqueName": "C:\\Users\\Huy\\basketball-shopping-app\\App\\Group5-DBApp\\Group5-DBApp.csproj",
         "projectName": "Group5-DBApp",
-        "projectPath": "C:\\Users\\Huy\\group5\\App\\Group5-DBApp\\Group5-DBApp.csproj",
+        "projectPath": "C:\\Users\\Huy\\basketball-shopping-app\\App\\Group5-DBApp\\Group5-DBApp.csproj",
         "packagesPath": "C:\\Users\\Huy\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Huy\\group5\\App\\Group5-DBApp\\obj\\",
+        "outputPath": "C:\\Users\\Huy\\basketball-shopping-app\\App\\Group5-DBApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Huy\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -81,7 +81,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.206/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
