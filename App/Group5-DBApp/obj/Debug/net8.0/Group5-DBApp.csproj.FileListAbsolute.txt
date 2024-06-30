@@ -711,3 +711,5 @@ C:\Users\Huy\basketball-shopping-app\App\Group5-DBApp\obj\Debug\net8.0\refint\Gr
 C:\Users\Huy\basketball-shopping-app\App\Group5-DBApp\obj\Debug\net8.0\Group5-DBApp.pdb
 C:\Users\Huy\basketball-shopping-app\App\Group5-DBApp\obj\Debug\net8.0\Group5-DBApp.genruntimeconfig.cache
 C:\Users\Huy\basketball-shopping-app\App\Group5-DBApp\obj\Debug\net8.0\ref\Group5-DBApp.dll
+C:\Users\Huy\basketball-shopping-app\App\Group5-DBApp\bin\Debug\net8.0\package-lock.json
+C:\Users\Huy\basketball-shopping-app\App\Group5-DBApp\bin\Debug\net8.0\package.json
